@@ -1,8 +1,14 @@
 {
   "name": "toolconv-landing",
   "version": 2,
-  "builds": [{ "src": "index.html", "use": "@vercel/static" }],
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "public/**", "use": "@vercel/static" }
+  ],
   "routes": [
+    { "src": "^/sitemap\\.xml$", "dest": "/public/sitemap.xml" },
+    { "src": "^/robots\\.txt$", "dest": "/public/robots.txt" },
+    { "src": "^/og-image\\.svg$", "dest": "/public/og-image.svg" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
