@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toolconv — Free Online Conversion Tools</title>
+  <meta name="description" content="Free online tools for unit conversion, image processing, and PDF conversion. All browser-based — zero upload, no signup.">
+  <meta name="keywords" content="unit converter, image tools, pdf converter, online tools, free converter">
+  <meta property="og:title" content="toolconv — Free Online Conversion Tools">
+  <meta property="og:description" content="Unit converter, image tools, PDF converter — all free, all in your browser.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toolconv.com">
+  <link rel="canonical" href="https://toolconv.com">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#f0f5ff', 100:'#e0ebff', 200:'#c7d7fe', 500:'#4f6ef7', 600:'#3b5de7', 700:'#2d4cd4' }
+          }
+        }
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "toolconv",
+    "url": "https://toolconv.com",
+    "description": "Free online conversion tools — unit converter, image tools, PDF converter.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://unit.toolconv.com/en/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <style>
+    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
+
+    /* Navbar glass effect */
+    .navbar-glass {
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Language dropdown */
+    .lang-dropdown {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.2s ease;
+    }
+    .lang-trigger:hover .lang-dropdown,
+    .lang-trigger:focus-within .lang-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* Active language indicator */
+    .lang-option { transition: background 0.15s; }
+    .lang-option:hover { background: #f0f5ff; }
+    .lang-option.active { background: #e0ebff; color: #3b5de7; font-weight: 600; }
+
+    /* Fade transition for i18n updates */
+    [data-i18n] { transition: opacity 0.15s; }
+
+    /* Nav link underline animation */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b5de7;
+      border-radius: 2px;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+<body class="bg-white text-gray-900 min-h-screen flex flex-col">
+
+  <!-- ═══════════════════════ Header / Navbar ═══════════════════════ -->
+  <header class="navbar-glass sticky top-0 z-50 border-b border-gray-100/60">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2.5 shrink-0 select-none">
+        <span class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white text-sm font-bold">T</span>
+        <span class="text-xl font-bold tracking-tight text-brand-600">toolconv</span>
+      </a>
+
+      <!-- Nav Links (desktop) -->
+      <nav class="hidden sm:flex items-center gap-8">
+        <a href="/" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600" data-i18n="nav.home">Home</a>
+        <a href="https://unit.toolconv.com" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600" data-i18n="nav.units">Unit Converter</a>
+        <a href="https://image.toolconv.com" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600" data-i18n="nav.images">Image Tools</a>
+        <a href="https://pdf.toolconv.com" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600" data-i18n="nav.pdf">PDF Tools</a>
+      </nav>
+
+      <!-- Right side: Language Switcher -->
+      <div class="flex items-center gap-3">
+        <!-- Language switcher -->
+        <div class="lang-trigger relative">
+          <button class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 transition-colors" aria-label="Switch language">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
+            <span id="current-lang-label" class="font-medium">EN</span>
+            <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <!-- Dropdown -->
+          <div class="lang-dropdown absolute right-0 top-full mt-1 w-44 bg-white border border-gray-100 rounded-xl shadow-lg shadow-gray-200/50 py-1.5 overflow-hidden">
+            <button class="lang-option w-full text-left px-4 py-2.5 text-sm flex items-center gap-2" data-lang="en">
+              <span class="text-base">🇺🇸</span><span>English</span>
+            </button>
+            <button class="lang-option w-full text-left px-4 py-2.5 text-sm flex items-center gap-2" data-lang="zh">
+              <span class="text-base">🇨🇳</span><span>简体中文</span>
+            </button>
+            <button class="lang-option w-full text-left px-4 py-2.5 text-sm flex items-center gap-2" data-lang="ja">
+              <span class="text-base">🇯🇵</span><span>日本語</span>
+            </button>
+            <button class="lang-option w-full text-left px-4 py-2.5 text-sm flex items-center gap-2" data-lang="ko">
+              <span class="text-base">🇰🇷</span><span>한국어</span>
+            </button>
+            <button class="lang-option w-full text-left px-4 py-2.5 text-sm flex items-center gap-2" data-lang="es">
+              <span class="text-base">🇪🇸</span><span>Español</span>
+            </button>
+            <button class="lang-option w-full text-left px-4 py-2.5 text-sm flex items-center gap-2" data-lang="fr">
+              <span class="text-base">🇫🇷</span><span>Français</span>
+            </button>
+            <button class="lang-option w-full text-left px-4 py-2.5 text-sm flex items-center gap-2" data-lang="de">
+              <span class="text-base">🇩🇪</span><span>Deutsch</span>
+            </button>
+            <button class="lang-option w-full text-left px-4 py-2.5 text-sm flex items-center gap-2" data-lang="pt">
+              <span class="text-base">🇧🇷</span><span>Português</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════ Hero ═══════════════════════ -->
+  <main class="flex-1">
+    <section class="max-w-4xl mx-auto px-6 pt-24 pb-12 text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4" data-i18n="hero.title">
+        Free Online <span class="text-brand-600">Conversion</span> Tools
+      </h1>
+      <p class="text-lg text-gray-500 max-w-xl mx-auto" data-i18n="hero.subtitle">
+        No upload, no signup. Everything runs in your browser. Fast, private, free.
+      </p>
+    </section>
+
+    <!-- ═══════════════════════ Tool Cards ═══════════════════════ -->
+    <section class="max-w-5xl mx-auto px-6 pb-24">
+      <div class="grid sm:grid-cols-3 gap-6">
+
+        <!-- Unit Converter -->
+        <a href="https://unit.toolconv.com" class="card-hover block bg-white border border-gray-100 rounded-2xl p-8 text-center no-underline group">
+          <div class="text-5xl mb-4">📏</div>
+          <h2 class="text-xl font-semibold mb-2 text-gray-900" data-i18n="cards.unit.title">Unit Converter</h2>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5" data-i18n="cards.unit.desc">
+            Length, weight, temperature, area, volume, speed, data, time &amp; currency
+          </p>
+          <span class="inline-block text-sm font-medium text-brand-600 group-hover:translate-x-1 transition-transform" data-i18n="cards.unit.link">unit.toolconv.com →</span>
+        </a>
+
+        <!-- Image Tools -->
+        <a href="https://image.toolconv.com" class="card-hover block bg-white border border-gray-100 rounded-2xl p-8 text-center no-underline group">
+          <div class="text-5xl mb-4">🖼️</div>
+          <h2 class="text-xl font-semibold mb-2 text-gray-900" data-i18n="cards.image.title">Image Tools</h2>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5" data-i18n="cards.image.desc">
+            Compress, convert, resize, crop, watermark &amp; more
+          </p>
+          <span class="inline-block text-sm font-medium text-brand-600 group-hover:translate-x-1 transition-transform" data-i18n="cards.image.link">image.toolconv.com →</span>
+        </a>
+
+        <!-- PDF Converter -->
+        <a href="https://pdf.toolconv.com" class="card-hover block bg-white border border-gray-100 rounded-2xl p-8 text-center no-underline group">
+          <div class="text-5xl mb-4">📄</div>
+          <h2 class="text-xl font-semibold mb-2 text-gray-900" data-i18n="cards.pdf.title">PDF Converter</h2>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5" data-i18n="cards.pdf.desc">
+            Merge, split, compress, convert PDF — coming soon
+          </p>
+          <span id="pdf-link" class="inline-block text-sm font-medium group-hover:translate-x-1 transition-transform" data-i18n="cards.pdf.link">pdf.toolconv.com →</span>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════ Footer ═══════════════════════ -->
+  <footer class="border-t border-gray-100 py-8">
+    <div class="max-w-4xl mx-auto px-6 text-center text-sm text-gray-400">
+      <p>
+        <span data-i18n="footer.copy">© 2026 toolconv · All tools run 100% in your browser</span>
+        <span class="mx-1">·</span>
+        <span class="text-brand-600" data-i18n="footer.privacy">Zero upload, full privacy.</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════ i18n Script ═══════════════════════ -->
+  <script>
+  (function() {
+    /* ── Translations ── */
+    const t = {
+      en: {
+        'nav.home': 'Home',
+        'nav.units': 'Unit Converter',
+        'nav.images': 'Image Tools',
+        'nav.pdf': 'PDF Tools',
+        'hero.title': 'Free Online <span class="text-brand-600">Conversion</span> Tools',
+        'hero.subtitle': 'No upload, no signup. Everything runs in your browser. Fast, private, free.',
+        'cards.unit.title': 'Unit Converter',
+        'cards.unit.desc': 'Length, weight, temperature, area, volume, speed, data, time &amp; currency',
+        'cards.unit.link': 'unit.toolconv.com →',
+        'cards.image.title': 'Image Tools',
+        'cards.image.desc': 'Compress, convert, resize, crop, watermark &amp; more',
+        'cards.image.link': 'image.toolconv.com →',
+        'cards.pdf.title': 'PDF Converter',
+        'cards.pdf.desc': 'Merge, split, compress, convert PDF — coming soon',
+        'cards.pdf.link': 'pdf.toolconv.com →',
+        'footer.copy': '© 2026 toolconv · All tools run 100% in your browser',
+        'footer.privacy': 'Zero upload, full privacy.',
+      },
+      zh: {
+        'nav.home': '首页',
+        'nav.units': '单位换算',
+        'nav.images': '图片工具',
+        'nav.pdf': 'PDF 工具',
+        'hero.title': '免费在线<span class="text-brand-600">转换</span>工具',
+        'hero.subtitle': '无需上传，无需注册。一切都在你的浏览器中运行。快速、私密、免费。',
+        'cards.unit.title': '单位换算器',
+        'cards.unit.desc': '长度、重量、温度、面积、体积、速度、数据、时间和货币',
+        'cards.unit.link': 'unit.toolconv.com →',
+        'cards.image.title': '图片工具',
+        'cards.image.desc': '压缩、转换、调整大小、裁剪、水印等',
+        'cards.image.link': 'image.toolconv.com →',
+        'cards.pdf.title': 'PDF 转换器',
+        'cards.pdf.desc': '合并、拆分、压缩、转换 PDF — 即将上线',
+        'cards.pdf.link': 'pdf.toolconv.com →',
+        'footer.copy': '© 2026 toolconv · 所有工具 100% 在浏览器中运行',
+        'footer.privacy': '零上传，绝对隐私。',
+      },
+      ja: {
+        'nav.home': 'ホーム',
+        'nav.units': '単位変換',
+        'nav.images': '画像ツール',
+        'nav.pdf': 'PDF ツール',
+        'hero.title': '無料オンライン<span class="text-brand-600">変換</span>ツール',
+        'hero.subtitle': 'アップロード不要、登録不要。すべてブラウザで実行。高速・安全・無料。',
+        'cards.unit.title': '単位変換',
+        'cards.unit.desc': '長さ、重さ、温度、面積、体積、速度、データ、時間、通貨',
+        'cards.unit.link': 'unit.toolconv.com →',
+        'cards.image.title': '画像ツール',
+        'cards.image.desc': '圧縮、変換、リサイズ、トリミング、透かしなど',
+        'cards.image.link': 'image.toolconv.com →',
+        'cards.pdf.title': 'PDF 変換',
+        'cards.pdf.desc': '結合、分割、圧縮、PDF変換 — 近日公開',
+        'cards.pdf.link': 'pdf.toolconv.com →',
+        'footer.copy': '© 2026 toolconv · すべてのツールはブラウザで実行',
+        'footer.privacy': 'アップロードゼロ、完全プライバシー。',
+      },
+      ko: {
+        'nav.home': '홈',
+        'nav.units': '단위 변환',
+        'nav.images': '이미지 도구',
+        'nav.pdf': 'PDF 도구',
+        'hero.title': '무료 온라인<span class="text-brand-600">변환</span> 도구',
+        'hero.subtitle': '업로드 불필요, 가입 불필요. 모든 것이 브라우저에서 실행됩니다. 빠르고 비공개이며 무료.',
+        'cards.unit.title': '단위 변환기',
+        'cards.unit.desc': '길이, 무게, 온도, 면적, 부피, 속도, 데이터, 시간 및 통화',
+        'cards.unit.link': 'unit.toolconv.com →',
+        'cards.image.title': '이미지 도구',
+        'cards.image.desc': '압축, 변환, 크기 조정, 자르기, 워터마크 등',
+        'cards.image.link': 'image.toolconv.com →',
+        'cards.pdf.title': 'PDF 변환기',
+        'cards.pdf.desc': '병합, 분할, 압축, PDF 변환 — 곧 출시',
+        'cards.pdf.link': 'pdf.toolconv.com →',
+        'footer.copy': '© 2026 toolconv · 모든 도구는 브라우저에서 실행',
+        'footer.privacy': '업로드 제로, 완벽한 개인정보 보호.',
+      },
+      es: {
+        'nav.home': 'Inicio',
+        'nav.units': 'Conversor de Unidades',
+        'nav.images': 'Herramientas de Imagen',
+        'nav.pdf': 'Herramientas PDF',
+        'hero.title': 'Herramientas de <span class="text-brand-600">Conversión</span> Gratis',
+        'hero.subtitle': 'Sin subidas, sin registro. Todo funciona en tu navegador. Rápido, privado, gratis.',
+        'cards.unit.title': 'Conversor de Unidades',
+        'cards.unit.desc': 'Longitud, peso, temperatura, área, volumen, velocidad, datos, tiempo y moneda',
+        'cards.unit.link': 'unit.toolconv.com →',
+        'cards.image.title': 'Herramientas de Imagen',
+        'cards.image.desc': 'Comprimir, convertir, redimensionar, recortar, marcas de agua y más',
+        'cards.image.link': 'image.toolconv.com →',
+        'cards.pdf.title': 'Conversor PDF',
+        'cards.pdf.desc': 'Unir, dividir, comprimir, convertir PDF — próximamente',
+        'cards.pdf.link': 'pdf.toolconv.com →',
+        'footer.copy': '© 2026 toolconv · Todas las herramientas se ejecutan en tu navegador',
+        'footer.privacy': 'Cero subidas, privacidad total.',
+      },
+      fr: {
+        'nav.home': 'Accueil',
+        'nav.units': 'Convertisseur',
+        'nav.images': 'Outils Image',
+        'nav.pdf': 'Outils PDF',
+        'hero.title': 'Outils de <span class="text-brand-600">Conversion</span> Gratuits',
+        'hero.subtitle': 'Pas de téléchargement, pas d\'inscription. Tout fonctionne dans votre navigateur. Rapide, privé, gratuit.',
+        'cards.unit.title': 'Convertisseur d\'Unités',
+        'cards.unit.desc': 'Longueur, poids, température, surface, volume, vitesse, données, temps et devises',
+        'cards.unit.link': 'unit.toolconv.com →',
+        'cards.image.title': 'Outils Image',
+        'cards.image.desc': 'Compresser, convertir, redimensionner, recadrer, filigrane et plus',
+        'cards.image.link': 'image.toolconv.com →',
+        'cards.pdf.title': 'Convertisseur PDF',
+        'cards.pdf.desc': 'Fusionner, diviser, compresser, convertir PDF — bientôt',
+        'cards.pdf.link': 'pdf.toolconv.com →',
+        'footer.copy': '© 2026 toolconv · Tous les outils fonctionnent dans votre navigateur',
+        'footer.privacy': 'Zéro téléchargement, confidentialité totale.',
+      },
+      de: {
+        'nav.home': 'Start',
+        'nav.units': 'Einheitenrechner',
+        'nav.images': 'Bildwerkzeuge',
+        'nav.pdf': 'PDF Werkzeuge',
+        'hero.title': 'Kostenlose Online-<span class="text-brand-600">Konvertierungs</span>werkzeuge',
+        'hero.subtitle': 'Kein Upload, keine Anmeldung. Alles läuft in Ihrem Browser. Schnell, privat, kostenlos.',
+        'cards.unit.title': 'Einheitenrechner',
+        'cards.unit.desc': 'Länge, Gewicht, Temperatur, Fläche, Volumen, Geschwindigkeit, Daten, Zeit & Währung',
+        'cards.unit.link': 'unit.toolconv.com →',
+        'cards.image.title': 'Bildwerkzeuge',
+        'cards.image.desc': 'Komprimieren, konvertieren, skalieren, zuschneiden, Wasserzeichen & mehr',
+        'cards.image.link': 'image.toolconv.com →',
+        'cards.pdf.title': 'PDF Konverter',
+        'cards.pdf.desc': 'Zusammenführen, teilen, komprimieren, PDF konvertieren — demnächst',
+        'cards.pdf.link': 'pdf.toolconv.com →',
+        'footer.copy': '© 2026 toolconv · Alle Werkzeuge laufen in Ihrem Browser',
+        'footer.privacy': 'Null Upload, volle Privatsphäre.',
+      },
+      pt: {
+        'nav.home': 'Início',
+        'nav.units': 'Conversor de Unidades',
+        'nav.images': 'Ferramentas de Imagem',
+        'nav.pdf': 'Ferramentas PDF',
+        'hero.title': 'Ferramentas de <span class="text-brand-600">Conversão</span> Grátis',
+        'hero.subtitle': 'Sem upload, sem cadastro. Tudo roda no seu navegador. Rápido, privado, grátis.',
+        'cards.unit.title': 'Conversor de Unidades',
+        'cards.unit.desc': 'Comprimento, peso, temperatura, área, volume, velocidade, dados, tempo e moeda',
+        'cards.unit.link': 'unit.toolconv.com →',
+        'cards.image.title': 'Ferramentas de Imagem',
+        'cards.image.desc': 'Comprimir, converter, redimensionar, cortar, marca d\'água e mais',
+        'cards.image.link': 'image.toolconv.com →',
+        'cards.pdf.title': 'Conversor PDF',
+        'cards.pdf.desc': 'Juntar, dividir, comprimir, converter PDF — em breve',
+        'cards.pdf.link': 'pdf.toolconv.com →',
+        'footer.copy': '© 2026 toolconv · Todas as ferramentas rodam no seu navegador',
+        'footer.privacy': 'Zero upload, privacidade total.',
+      },
+    };
+
+    const langLabels = { en:'EN', zh:'中文', ja:'日本語', ko:'한국어', es:'ES', fr:'FR', de:'DE', pt:'PT' };
+
+    /* ── Helpers ── */
+    function getLang() {
+      const stored = localStorage.getItem('toolconv-lang');
+      if (stored && t[stored]) return stored;
+      // Detect browser language
+      const nav = (navigator.language || 'en').split('-')[0];
+      // Map zh -> zh, ja -> ja, ko -> ko, es -> es, fr -> fr, de -> de, pt -> pt
+      if (t[nav]) return nav;
+      return 'en';
+    }
+
+    function setLang(lang) {
+      localStorage.setItem('toolconv-lang', lang);
+      document.documentElement.lang = lang;
+      applyLang(lang);
+      updateActiveOption(lang);
+    }
+
+    function applyLang(lang) {
+      const dict = t[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) {
+          el.innerHTML = dict[key];
+        }
+      });
+      // Update current-lang-label
+      const lbl = document.getElementById('current-lang-label');
+      if (lbl) lbl.textContent = langLabels[lang] || lang.toUpperCase();
+
+      // Handle PDF link graying (coming soon → always grayed)
+      const pdfLink = document.getElementById('pdf-link');
+      if (pdfLink) {
+        const isComingSoon = dict['cards.pdf.desc'] && dict['cards.pdf.desc'].includes('coming soon|近日公開|곧 출시|próximamente|bientôt|demnächst|em breve|即将上线');
+        pdfLink.className = 'inline-block text-sm font-medium group-hover:translate-x-1 transition-transform ' +
+          (isComingSoon ? 'text-gray-300' : 'text-brand-600');
+      }
+    }
+
+    function updateActiveOption(lang) {
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    /* ── Init ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = getLang();
+      setLang(lang);
+
+      // Language option clicks
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLang(btn.dataset.lang);
+        });
+      });
+
+      // Close dropdown on outside click
+      document.addEventListener('click', (e) => {
+        const trigger = document.querySelector('.lang-trigger');
+        if (trigger && !trigger.contains(e.target)) {
+          // blur the active element to let CSS :focus-within close the dropdown
+          if (document.activeElement) document.activeElement.blur();
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
