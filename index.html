@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>toolconv — Free Online Conversion Tools</title>
-  <meta name="description" content="Free online conversion tools: unit converter (length, weight, temperature, currency &amp; more), image compressor &amp; resizer, and PDF converter. Zero upload, no signup — 100% browser-based, private, and free.">
-  <meta name="keywords" content="unit converter, image tools, pdf converter, online tools, free converter">
+  <meta name="description" content="Free online conversion tools: unit converter (length, weight, temperature, currency &amp; more), image compressor &amp; resizer, PDF converter, and audio tools. Zero upload, no signup — 100% browser-based, private, and free.">
+  <meta name="keywords" content="unit converter, image tools, pdf converter, audio tools, audio converter, online tools, free converter">
   <meta property="og:title" content="toolconv — Free Online Conversion Tools">
-  <meta property="og:description" content="Free online conversion tools: unit converter, image tools, and PDF converter. Zero upload, no signup — 100% browser-based.">
+  <meta property="og:description" content="Free online conversion tools: unit converter, image tools, PDF converter, and audio tools. Zero upload, no signup — 100% browser-based.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://toolconv.com">
   <meta property="og:image" content="https://toolconv.com/og-image.png">
@@ -16,18 +16,13 @@
   <meta property="og:image:type" content="image/png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="toolconv — Free Online Conversion Tools">
-  <meta name="twitter:description" content="Free online conversion tools: unit converter, image tools, and PDF converter. Zero upload, no signup — 100% browser-based.">
+  <meta name="twitter:description" content="Free online conversion tools: unit converter, image tools, PDF converter, and audio tools. Zero upload, no signup — 100% browser-based.">
   <meta name="twitter:image" content="https://toolconv.com/og-image.png">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3840385382533387" crossorigin="anonymous"></script>
   <link rel="canonical" href="https://toolconv.com">
   <link rel="alternate" href="https://toolconv.com" hreflang="x-default">
   <link rel="alternate" href="https://toolconv.com" hreflang="en">
-  <link rel="alternate" href="https://toolconv.com" hreflang="zh">
-  <link rel="alternate" href="https://toolconv.com" hreflang="ja">
-  <link rel="alternate" href="https://toolconv.com" hreflang="ko">
-  <link rel="alternate" href="https://toolconv.com" hreflang="es">
-  <link rel="alternate" href="https://toolconv.com" hreflang="fr">
-  <link rel="alternate" href="https://toolconv.com" hreflang="de">
-  <link rel="alternate" href="https://toolconv.com" hreflang="pt">
   <!-- Tailwind CSS via CDN (dev-mode convenience) — replace with compiled build for production: https://tailwindcss.com/docs/installation -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -52,7 +47,7 @@
         "name": "What is toolconv?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "toolconv is a collection of free online conversion tools including a unit converter, image processing tools, and a PDF converter. All tools run entirely in your browser — nothing is uploaded to any server."
+          "text": "toolconv is a collection of free online conversion tools including a unit converter, image processing tools, a PDF converter, and audio tools. All tools run entirely in your browser — nothing is uploaded to any server."
         }
       },
       {
@@ -76,7 +71,7 @@
         "name": "What tools does toolconv offer?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "toolconv offers three main tools: Unit Converter (length, weight, temperature, area, volume, speed, data, time, and currency), Image Tools (compress, convert, resize, crop, watermark), and PDF Converter (merge, split, compress, convert)."
+          "text": "toolconv offers four main tool families: Unit Converter (length, weight, temperature, area, volume, speed, data, time, and currency), Image Tools (compress, convert, resize, crop, watermark), PDF Converter (merge, split, compress, convert), and Audio Tools (convert, trim, merge, compress, adjust volume, and extract audio)."
         }
       },
       {
@@ -118,6 +113,12 @@
         "position": 4,
         "name": "PDF Tools",
         "item": "https://pdf.toolconv.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Audio Tools",
+        "item": "https://audio.toolconv.com"
       }
     ]
   }
@@ -129,7 +130,7 @@
     "name": "toolconv",
     "url": "https://toolconv.com",
     "logo": "https://toolconv.com/og-image.png",
-    "description": "Free online conversion tools — unit converter, image tools, PDF converter. Zero upload, no signup, 100% browser-based."
+    "description": "Free online conversion tools — unit converter, image tools, PDF converter, and audio tools. Zero upload, no signup, 100% browser-based."
   }
   </script>
   <script type="application/ld+json">
@@ -138,7 +139,7 @@
     "@type": "WebSite",
     "name": "toolconv",
     "url": "https://toolconv.com",
-    "description": "Free online conversion tools — unit converter, image tools, PDF converter.",
+    "description": "Free online conversion tools — unit converter, image tools, PDF converter, and audio tools.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://unit.toolconv.com/en/",
@@ -196,6 +197,26 @@
       transition: width 0.25s ease;
     }
     .nav-link:hover::after { width: 100%; }
+
+    /* Bookmark hint bar */
+    .bookmark-hint-bar {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(30,30,30,0.92); backdrop-filter: blur(8px);
+      color: #fff; font-size: 13px; padding: 10px 20px;
+      border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      display: flex; align-items: center; gap: 8px;
+      opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
+    }
+    .bookmark-hint-bar.show {
+      opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto;
+    }
+    .bookmark-hint-bar .kbd {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 5px;
+      padding: 2px 7px; font-family: inherit; font-size: 12px; font-weight: 600;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 min-h-screen flex flex-col">
@@ -216,6 +237,7 @@
         <a href="https://unit.toolconv.com" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600" data-i18n="nav.units">Unit Converter</a>
         <a href="https://image.toolconv.com" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600" data-i18n="nav.images">Image Tools</a>
         <a href="https://pdf.toolconv.com" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600" data-i18n="nav.pdf">PDF Tools</a>
+        <a href="https://audio.toolconv.com" class="nav-link text-sm font-medium text-gray-700 hover:text-brand-600" data-i18n="nav.audio">Audio Tools</a>
       </nav>
 
       <!-- Right side: Language Switcher -->
@@ -276,7 +298,7 @@
 
     <!-- ═══════════════════════ Tool Cards ═══════════════════════ -->
     <section class="max-w-5xl mx-auto px-6 pb-24">
-      <div class="grid sm:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
         <!-- Unit Converter -->
         <a href="https://unit.toolconv.com" class="card-hover block bg-white border border-gray-100 rounded-2xl p-8 text-center no-underline group">
@@ -303,11 +325,143 @@
           <div class="text-5xl mb-4">📄</div>
           <h2 class="text-xl font-semibold mb-2 text-gray-900" data-i18n="cards.pdf.title">PDF Converter</h2>
           <p class="text-sm text-gray-400 leading-relaxed mb-5" data-i18n="cards.pdf.desc">
-            Merge, split, compress, convert PDF — coming soon
+            Merge, split, compress, organize and convert PDF files
           </p>
-          <span id="pdf-link" class="inline-block text-sm font-medium group-hover:translate-x-1 transition-transform" data-i18n="cards.pdf.link">pdf.toolconv.com →</span>
+          <span id="pdf-link" class="inline-block text-sm font-medium text-brand-600 group-hover:translate-x-1 transition-transform" data-i18n="cards.pdf.link">pdf.toolconv.com →</span>
         </a>
 
+        <!-- Audio Tools -->
+        <a href="https://audio.toolconv.com" class="card-hover block bg-white border border-gray-100 rounded-2xl p-8 text-center no-underline group">
+          <div class="text-5xl mb-4">🎧</div>
+          <h2 class="text-xl font-semibold mb-2 text-gray-900" data-i18n="cards.audio.title">Audio Tools</h2>
+          <p class="text-sm text-gray-400 leading-relaxed mb-5" data-i18n="cards.audio.desc">
+            Convert, trim, merge, compress, adjust volume, and extract audio files
+          </p>
+          <span class="inline-block text-sm font-medium text-brand-600 group-hover:translate-x-1 transition-transform" data-i18n="cards.audio.link">audio.toolconv.com →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════ Publisher Content ═══════════════════════ -->
+    <section class="border-t border-gray-100 bg-white">
+      <div class="max-w-5xl mx-auto px-6 py-16">
+        <div class="max-w-3xl">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-4">Private conversion tools for everyday work</h2>
+          <p class="text-gray-600 leading-8">
+            toolconv brings together focused converters for documents, images, audio, and measurements. The goal is to make routine conversion tasks fast without forcing signups, file queues, or complicated desktop software. Most tools are designed to run directly in your browser so you can finish small jobs without sending files through a remote processing pipeline.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+          <article class="rounded-lg border border-gray-100 p-6">
+            <h3 class="font-semibold text-gray-900 mb-2">Browser-first processing</h3>
+            <p class="text-sm text-gray-500 leading-7">
+              Image, PDF, audio, and unit workflows are built around client-side processing where the browser can safely handle the task. This keeps common operations quick and avoids unnecessary uploads.
+            </p>
+          </article>
+          <article class="rounded-lg border border-gray-100 p-6">
+            <h3 class="font-semibold text-gray-900 mb-2">Clear tool families</h3>
+            <p class="text-sm text-gray-500 leading-7">
+              Each subdomain focuses on one job family: unit conversions, image utilities, PDF workflows, and audio tools. That structure makes it easier to find the right tool and understand what each page does.
+            </p>
+          </article>
+          <article class="rounded-lg border border-gray-100 p-6">
+            <h3 class="font-semibold text-gray-900 mb-2">Useful context, not just buttons</h3>
+            <p class="text-sm text-gray-500 leading-7">
+              Tool pages include practical notes, supported formats, related utilities, and common questions so users can choose settings with confidence instead of guessing.
+            </p>
+          </article>
+          <article class="rounded-lg border border-gray-100 p-6">
+            <h3 class="font-semibold text-gray-900 mb-2">Audio tasks included</h3>
+            <p class="text-sm text-gray-500 leading-7">
+              Audio tools cover format conversion, trimming, merging, compression, volume changes, speed adjustment, and extracting sound from video files.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 border-t border-gray-100">
+      <div class="max-w-5xl mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-8">Choose the right tool</h2>
+        <div class="grid lg:grid-cols-2 gap-6">
+          <article class="rounded-lg bg-white border border-gray-100 p-6">
+            <h3 class="font-semibold text-gray-900 mb-2">PDF workflows</h3>
+            <p class="text-sm text-gray-500 leading-7">
+              Use PDF tools when you need to merge files, split pages, compress large documents, convert PDFs to images, turn images into PDFs, add page numbers, rotate pages, or prepare a document before sharing it by email.
+            </p>
+          </article>
+          <article class="rounded-lg bg-white border border-gray-100 p-6">
+            <h3 class="font-semibold text-gray-900 mb-2">Image workflows</h3>
+            <p class="text-sm text-gray-500 leading-7">
+              Use image tools for web publishing, social posts, thumbnails, screenshots, favicon packages, watermarking, EXIF removal, color extraction, format conversion, and file size reduction.
+            </p>
+          </article>
+          <article class="rounded-lg bg-white border border-gray-100 p-6">
+            <h3 class="font-semibold text-gray-900 mb-2">Unit conversions</h3>
+            <p class="text-sm text-gray-500 leading-7">
+              Use unit converters for school, engineering, travel, cooking, finance, storage, fuel economy, and international measurement differences such as Celsius vs Fahrenheit, miles vs kilometers, or MB vs MiB.
+            </p>
+          </article>
+          <article class="rounded-lg bg-white border border-gray-100 p-6">
+            <h3 class="font-semibold text-gray-900 mb-2">Audio workflows</h3>
+            <p class="text-sm text-gray-500 leading-7">
+              Use audio tools when you need to convert MP3, WAV, OGG, FLAC, AAC, or M4A files, trim recordings, merge tracks, reduce file size, adjust playback speed, normalize volume, or extract audio from video.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 bg-white">
+      <div class="max-w-5xl mx-auto px-6 py-16">
+        <div class="grid lg:grid-cols-[1fr_1.2fr] gap-10">
+          <div>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-4">How toolconv handles files</h2>
+            <p class="text-gray-600 leading-8">
+              Privacy claims are easiest to trust when they are specific. On toolconv, browser-capable tools process selected files locally on your device. Advertising and analytics may help support the site, but they are separate from file processing and do not inspect your file contents.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <div class="rounded-lg border border-gray-100 p-5">
+              <h3 class="font-semibold text-gray-900">Files stay in the browser where possible</h3>
+              <p class="text-sm text-gray-500 leading-7 mt-1">Common image, PDF, and audio operations use browser APIs and JavaScript libraries rather than server-side upload queues.</p>
+            </div>
+            <div class="rounded-lg border border-gray-100 p-5">
+              <h3 class="font-semibold text-gray-900">No account required</h3>
+              <p class="text-sm text-gray-500 leading-7 mt-1">The core tools are available without registration, user profiles, or file history tied to an account.</p>
+            </div>
+            <div class="rounded-lg border border-gray-100 p-5">
+              <h3 class="font-semibold text-gray-900">Limits are explained on tool pages</h3>
+              <p class="text-sm text-gray-500 leading-7 mt-1">Large files, mobile browsers, encrypted files, animation formats, and advanced OCR may have limits depending on the tool and device.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 border-t border-gray-100">
+      <div class="max-w-4xl mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-8">Frequently asked questions</h2>
+        <div class="space-y-4">
+          <details class="group rounded-lg bg-white border border-gray-100 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded">Is toolconv free to use?</summary>
+            <p class="text-sm text-gray-500 leading-7 mt-3">Yes. The core conversion tools are free to use without an account. Some future high-cost or batch workflows may become optional Pro features, but the basic tools remain focused on free access.</p>
+          </details>
+          <details class="group rounded-lg bg-white border border-gray-100 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded">Are my files uploaded?</summary>
+            <p class="text-sm text-gray-500 leading-7 mt-3">Browser-capable tools process files locally on your device. If a tool ever needs a server-side feature, the page should say so clearly before you use it.</p>
+          </details>
+          <details class="group rounded-lg bg-white border border-gray-100 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded">Which formats are supported?</summary>
+            <p class="text-sm text-gray-500 leading-7 mt-3">Supported formats depend on the tool. Image pages cover formats such as JPG, PNG, WebP, AVIF, SVG, and ICO; PDF pages cover document workflows; unit pages cover measurement categories and currency pairs.</p>
+          </details>
+          <details class="group rounded-lg bg-white border border-gray-100 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded">Why are tools split across subdomains?</summary>
+            <p class="text-sm text-gray-500 leading-7 mt-3">Each subdomain is optimized for a specific workflow family. This keeps navigation, sitemap structure, and related content clearer for users and search engines.</p>
+          </details>
+        </div>
       </div>
     </section>
   </main>
@@ -320,6 +474,12 @@
         <span class="mx-1">·</span>
         <span class="text-brand-600" data-i18n="footer.privacy">Zero upload, full privacy.</span>
       </p>
+      <nav aria-label="Legal links" class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2">
+        <a href="/about" class="hover:text-brand-600 focus:text-brand-600">About</a>
+        <a href="/privacy" class="hover:text-brand-600 focus:text-brand-600">Privacy</a>
+        <a href="/terms" class="hover:text-brand-600 focus:text-brand-600">Terms</a>
+        <a href="/contact" class="hover:text-brand-600 focus:text-brand-600">Contact</a>
+      </nav>
     </div>
   </footer>
 
@@ -333,6 +493,8 @@
         'nav.units': 'Unit Converter',
         'nav.images': 'Image Tools',
         'nav.pdf': 'PDF Tools',
+        'nav.audio': 'Audio Tools',
+        'nav.bookmark.hint': 'Press {shortcut} to bookmark',
         'hero.title': 'Free Online <span class="text-brand-600">Conversion</span> Tools',
         'hero.subtitle': 'No upload, no signup. Everything runs in your browser. Fast, private, free.',
         'cards.unit.title': 'Unit Converter',
@@ -342,8 +504,11 @@
         'cards.image.desc': 'Compress, convert, resize, crop, watermark &amp; more',
         'cards.image.link': 'image.toolconv.com →',
         'cards.pdf.title': 'PDF Converter',
-        'cards.pdf.desc': 'Merge, split, compress, convert PDF — coming soon',
+        'cards.pdf.desc': 'Merge, split, compress, organize and convert PDF files',
         'cards.pdf.link': 'pdf.toolconv.com →',
+        'cards.audio.title': 'Audio Tools',
+        'cards.audio.desc': 'Convert, trim, merge, compress, adjust volume, and extract audio files',
+        'cards.audio.link': 'audio.toolconv.com →',
         'footer.copy': '© 2026 toolconv · All tools run 100% in your browser',
         'footer.privacy': 'Zero upload, full privacy.',
       },
@@ -352,6 +517,8 @@
         'nav.units': '单位换算',
         'nav.images': '图片工具',
         'nav.pdf': 'PDF 工具',
+        'nav.audio': '音频工具',
+        'nav.bookmark.hint': '按 {shortcut} 收藏此页',
         'hero.title': '免费在线<span class="text-brand-600">转换</span>工具',
         'hero.subtitle': '无需上传，无需注册。一切都在你的浏览器中运行。快速、私密、免费。',
         'cards.unit.title': '单位换算器',
@@ -361,8 +528,11 @@
         'cards.image.desc': '压缩、转换、调整大小、裁剪、水印等',
         'cards.image.link': 'image.toolconv.com →',
         'cards.pdf.title': 'PDF 转换器',
-        'cards.pdf.desc': '合并、拆分、压缩、转换 PDF — 即将上线',
+        'cards.pdf.desc': '合并、拆分、压缩、整理和转换 PDF 文件',
         'cards.pdf.link': 'pdf.toolconv.com →',
+        'cards.audio.title': '音频工具',
+        'cards.audio.desc': '转换、裁剪、合并、压缩、调整音量并提取音频文件',
+        'cards.audio.link': 'audio.toolconv.com →',
         'footer.copy': '© 2026 toolconv · 所有工具 100% 在浏览器中运行',
         'footer.privacy': '零上传，绝对隐私。',
       },
@@ -371,6 +541,8 @@
         'nav.units': '単位変換',
         'nav.images': '画像ツール',
         'nav.pdf': 'PDF ツール',
+        'nav.audio': '音声ツール',
+        'nav.bookmark.hint': '{shortcut} でブックマーク',
         'hero.title': '無料オンライン<span class="text-brand-600">変換</span>ツール',
         'hero.subtitle': 'アップロード不要、登録不要。すべてブラウザで実行。高速・安全・無料。',
         'cards.unit.title': '単位変換',
@@ -380,8 +552,11 @@
         'cards.image.desc': '圧縮、変換、リサイズ、トリミング、透かしなど',
         'cards.image.link': 'image.toolconv.com →',
         'cards.pdf.title': 'PDF 変換',
-        'cards.pdf.desc': '結合、分割、圧縮、PDF変換 — 近日公開',
+        'cards.pdf.desc': 'PDF の結合、分割、圧縮、整理、変換',
         'cards.pdf.link': 'pdf.toolconv.com →',
+        'cards.audio.title': '音声ツール',
+        'cards.audio.desc': '変換、トリミング、結合、圧縮、音量調整、音声抽出',
+        'cards.audio.link': 'audio.toolconv.com →',
         'footer.copy': '© 2026 toolconv · すべてのツールはブラウザで実行',
         'footer.privacy': 'アップロードゼロ、完全プライバシー。',
       },
@@ -390,6 +565,8 @@
         'nav.units': '단위 변환',
         'nav.images': '이미지 도구',
         'nav.pdf': 'PDF 도구',
+        'nav.audio': '오디오 도구',
+        'nav.bookmark.hint': '{shortcut} 눌러 즐겨찾기',
         'hero.title': '무료 온라인<span class="text-brand-600">변환</span> 도구',
         'hero.subtitle': '업로드 불필요, 가입 불필요. 모든 것이 브라우저에서 실행됩니다. 빠르고 비공개이며 무료.',
         'cards.unit.title': '단위 변환기',
@@ -399,8 +576,11 @@
         'cards.image.desc': '압축, 변환, 크기 조정, 자르기, 워터마크 등',
         'cards.image.link': 'image.toolconv.com →',
         'cards.pdf.title': 'PDF 변환기',
-        'cards.pdf.desc': '병합, 분할, 압축, PDF 변환 — 곧 출시',
+        'cards.pdf.desc': 'PDF 파일 병합, 분할, 압축, 정리 및 변환',
         'cards.pdf.link': 'pdf.toolconv.com →',
+        'cards.audio.title': '오디오 도구',
+        'cards.audio.desc': '오디오 변환, 자르기, 병합, 압축, 볼륨 조정 및 추출',
+        'cards.audio.link': 'audio.toolconv.com →',
         'footer.copy': '© 2026 toolconv · 모든 도구는 브라우저에서 실행',
         'footer.privacy': '업로드 제로, 완벽한 개인정보 보호.',
       },
@@ -409,6 +589,8 @@
         'nav.units': 'Conversor de Unidades',
         'nav.images': 'Herramientas de Imagen',
         'nav.pdf': 'Herramientas PDF',
+        'nav.audio': 'Herramientas de Audio',
+        'nav.bookmark.hint': 'Pulsa {shortcut} para añadir',
         'hero.title': 'Herramientas de <span class="text-brand-600">Conversión</span> Gratis',
         'hero.subtitle': 'Sin subidas, sin registro. Todo funciona en tu navegador. Rápido, privado, gratis.',
         'cards.unit.title': 'Conversor de Unidades',
@@ -418,8 +600,11 @@
         'cards.image.desc': 'Comprimir, convertir, redimensionar, recortar, marcas de agua y más',
         'cards.image.link': 'image.toolconv.com →',
         'cards.pdf.title': 'Conversor PDF',
-        'cards.pdf.desc': 'Unir, dividir, comprimir, convertir PDF — próximamente',
+        'cards.pdf.desc': 'Unir, dividir, comprimir, organizar y convertir PDF',
         'cards.pdf.link': 'pdf.toolconv.com →',
+        'cards.audio.title': 'Herramientas de Audio',
+        'cards.audio.desc': 'Convertir, recortar, unir, comprimir, ajustar volumen y extraer audio',
+        'cards.audio.link': 'audio.toolconv.com →',
         'footer.copy': '© 2026 toolconv · Todas las herramientas se ejecutan en tu navegador',
         'footer.privacy': 'Cero subidas, privacidad total.',
       },
@@ -428,6 +613,8 @@
         'nav.units': 'Convertisseur',
         'nav.images': 'Outils Image',
         'nav.pdf': 'Outils PDF',
+        'nav.audio': 'Outils Audio',
+        'nav.bookmark.hint': 'Appuyez sur {shortcut}',
         'hero.title': 'Outils de <span class="text-brand-600">Conversion</span> Gratuits',
         'hero.subtitle': 'Pas de téléchargement, pas d\'inscription. Tout fonctionne dans votre navigateur. Rapide, privé, gratuit.',
         'cards.unit.title': 'Convertisseur d\'Unités',
@@ -437,8 +624,11 @@
         'cards.image.desc': 'Compresser, convertir, redimensionner, recadrer, filigrane et plus',
         'cards.image.link': 'image.toolconv.com →',
         'cards.pdf.title': 'Convertisseur PDF',
-        'cards.pdf.desc': 'Fusionner, diviser, compresser, convertir PDF — bientôt',
+        'cards.pdf.desc': 'Fusionner, diviser, compresser, organiser et convertir PDF',
         'cards.pdf.link': 'pdf.toolconv.com →',
+        'cards.audio.title': 'Outils Audio',
+        'cards.audio.desc': 'Convertir, découper, fusionner, compresser, ajuster le volume et extraire l\'audio',
+        'cards.audio.link': 'audio.toolconv.com →',
         'footer.copy': '© 2026 toolconv · Tous les outils fonctionnent dans votre navigateur',
         'footer.privacy': 'Zéro téléchargement, confidentialité totale.',
       },
@@ -447,6 +637,8 @@
         'nav.units': 'Einheitenrechner',
         'nav.images': 'Bildwerkzeuge',
         'nav.pdf': 'PDF Werkzeuge',
+        'nav.audio': 'Audio Werkzeuge',
+        'nav.bookmark.hint': '{shortcut} drücken zum Speichern',
         'hero.title': 'Kostenlose Online-<span class="text-brand-600">Konvertierungs</span>werkzeuge',
         'hero.subtitle': 'Kein Upload, keine Anmeldung. Alles läuft in Ihrem Browser. Schnell, privat, kostenlos.',
         'cards.unit.title': 'Einheitenrechner',
@@ -456,8 +648,11 @@
         'cards.image.desc': 'Komprimieren, konvertieren, skalieren, zuschneiden, Wasserzeichen & mehr',
         'cards.image.link': 'image.toolconv.com →',
         'cards.pdf.title': 'PDF Konverter',
-        'cards.pdf.desc': 'Zusammenführen, teilen, komprimieren, PDF konvertieren — demnächst',
+        'cards.pdf.desc': 'PDF zusammenführen, teilen, komprimieren, organisieren und konvertieren',
         'cards.pdf.link': 'pdf.toolconv.com →',
+        'cards.audio.title': 'Audio Werkzeuge',
+        'cards.audio.desc': 'Audio konvertieren, schneiden, zusammenführen, komprimieren, Lautstärke ändern und extrahieren',
+        'cards.audio.link': 'audio.toolconv.com →',
         'footer.copy': '© 2026 toolconv · Alle Werkzeuge laufen in Ihrem Browser',
         'footer.privacy': 'Null Upload, volle Privatsphäre.',
       },
@@ -466,6 +661,8 @@
         'nav.units': 'Conversor de Unidades',
         'nav.images': 'Ferramentas de Imagem',
         'nav.pdf': 'Ferramentas PDF',
+        'nav.audio': 'Ferramentas de Áudio',
+        'nav.bookmark.hint': 'Pressione {shortcut} para favoritar',
         'hero.title': 'Ferramentas de <span class="text-brand-600">Conversão</span> Grátis',
         'hero.subtitle': 'Sem upload, sem cadastro. Tudo roda no seu navegador. Rápido, privado, grátis.',
         'cards.unit.title': 'Conversor de Unidades',
@@ -475,8 +672,11 @@
         'cards.image.desc': 'Comprimir, converter, redimensionar, cortar, marca d\'água e mais',
         'cards.image.link': 'image.toolconv.com →',
         'cards.pdf.title': 'Conversor PDF',
-        'cards.pdf.desc': 'Juntar, dividir, comprimir, converter PDF — em breve',
+        'cards.pdf.desc': 'Juntar, dividir, comprimir, organizar e converter PDF',
         'cards.pdf.link': 'pdf.toolconv.com →',
+        'cards.audio.title': 'Ferramentas de Áudio',
+        'cards.audio.desc': 'Converter, cortar, juntar, comprimir, ajustar volume e extrair áudio',
+        'cards.audio.link': 'audio.toolconv.com →',
         'footer.copy': '© 2026 toolconv · Todas as ferramentas rodam no seu navegador',
         'footer.privacy': 'Zero upload, privacidade total.',
       },
@@ -486,17 +686,22 @@
 
     /* ── Helpers ── */
     function getLang() {
-      const stored = localStorage.getItem('toolconv-lang');
+      // 1. Shared cookie (跨子域共享语言) — 优先读取
+      var cookieMatch = document.cookie.match('(^|;)\\s*toolconv_lang\\s*=\\s*([^;]+)');
+      if (cookieMatch && t[cookieMatch[2]]) return cookieMatch[2];
+      // 2. localStorage fallback
+      var stored = localStorage.getItem('toolconv-lang');
       if (stored && t[stored]) return stored;
-      // Detect browser language
-      const nav = (navigator.language || 'en').split('-')[0];
-      // Map zh -> zh, ja -> ja, ko -> ko, es -> es, fr -> fr, de -> de, pt -> pt
+      // 3. Browser language detection
+      var nav = (navigator.language || 'en').split('-')[0];
       if (t[nav]) return nav;
       return 'en';
     }
 
     function setLang(lang) {
       localStorage.setItem('toolconv-lang', lang);
+      // 写入共享 cookie（所有 toolconv.com 子域可读取）
+      document.cookie = 'toolconv_lang=' + lang + ';domain=.toolconv.com;path=/;max-age=31536000;SameSite=Lax';
       document.documentElement.lang = lang;
       applyLang(lang);
       updateActiveOption(lang);
@@ -514,13 +719,6 @@
       const lbl = document.getElementById('current-lang-label');
       if (lbl) lbl.textContent = langLabels[lang] || lang.toUpperCase();
 
-      // Handle PDF link graying (coming soon → always grayed)
-      const pdfLink = document.getElementById('pdf-link');
-      if (pdfLink) {
-        const isComingSoon = dict['cards.pdf.desc'] && dict['cards.pdf.desc'].includes('coming soon|近日公開|곧 출시|próximamente|bientôt|demnächst|em breve|即将上线');
-        pdfLink.className = 'inline-block text-sm font-medium group-hover:translate-x-1 transition-transform ' +
-          (isComingSoon ? 'text-gray-300' : 'text-brand-600');
-      }
     }
 
     function updateActiveOption(lang) {
@@ -549,8 +747,36 @@
           if (document.activeElement) document.activeElement.blur();
         }
       });
+
+      // ── Bookmark hint bar ──
+      // Show a one-time hint telling the user the bookmark shortcut
+      const hintBar = document.getElementById('bookmark-hint');
+      const hintText = document.getElementById('bookmark-hint-text');
+      if (hintBar && hintText) {
+        const isMac = /Mac|iPhone|iPad/.test(navigator.userAgent);
+        const shortcut = isMac ? '⌘+D' : 'Ctrl+D';
+        const dict = t[getLang()] || t['en'];
+        const hint = (dict['nav.bookmark.hint'] || 'Press {shortcut} to bookmark')
+          .replace('{shortcut}', '<span class="kbd">' + shortcut + '</span>');
+        hintText.innerHTML = hint;
+
+        // Show after 2s, auto-hide after 5s
+        setTimeout(() => { hintBar.classList.add('show'); }, 2000);
+        setTimeout(() => { hintBar.classList.remove('show'); }, 7000);
+
+        // Dismiss on click
+        hintBar.addEventListener('click', () => { hintBar.classList.remove('show'); });
+      }
     });
   })();
   </script>
+  <!-- Bookmark hint bar -->
+  <div id="bookmark-hint" class="bookmark-hint-bar">
+    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+    </svg>
+    <span id="bookmark-hint-text"></span>
+  </div>
+
 </body>
 </html>

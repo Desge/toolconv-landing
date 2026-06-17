@@ -6,9 +6,14 @@
     { "src": "public/**", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "^/$", "dest": "/index.html" },
+    { "src": "^/(about|privacy|terms|contact)/?$", "dest": "/public/$1.html" },
+    { "src": "^/404/?$", "dest": "/public/404.html" },
+    { "src": "^/ads\\.txt$", "dest": "/public/ads.txt" },
     { "src": "^/sitemap\\.xml$", "dest": "/public/sitemap.xml" },
+    { "src": "^/sitemap-pages\\.xml$", "dest": "/public/sitemap-pages.xml" },
     { "src": "^/robots\\.txt$", "dest": "/public/robots.txt" },
-    { "src": "^/og-image\\.svg$", "dest": "/public/og-image.svg" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "^/og-image\\.(png|svg)$", "dest": "/public/og-image.$1" },
+    { "src": "^/(.*)$", "dest": "/public/404.html", "status": 404 }
   ]
 }
