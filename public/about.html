@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang-default="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About toolconv</title>
-  <meta name="description" content="Learn about toolconv, a privacy-first collection of browser-based unit, image, and PDF conversion tools.">
+  <title id="page-title">About toolconv</title>
+  <meta id="meta-desc" name="description" content="Learn about toolconv, a privacy-first collection of browser-based unit, image, and PDF conversion tools.">
   <link rel="canonical" href="https://toolconv.com/about">
   <style>
     :root { color-scheme: light; --brand: #3b5de7; --text: #111827; --muted: #4b5563; --line: #e5e7eb; --bg: #f8fafc; }
@@ -12,7 +12,7 @@
     body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
     header, main, footer { max-width: 880px; margin: 0 auto; padding: 24px; }
     header { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); background: #fff; }
-    nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; align-items: center; }
     a { color: var(--brand); text-decoration: none; }
     a:hover, a:focus { text-decoration: underline; }
     .brand { font-weight: 800; color: var(--text); }
@@ -22,37 +22,216 @@
     p, li { color: var(--muted); }
     ul { padding-left: 22px; }
     footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; background: #fff; }
+    /* Language switcher */
+    .lang-trigger { position: relative; }
+    .lang-dropdown { opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s ease; position: absolute; right: 0; top: 100%; margin-top: 4px; width: 160px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 6px 0; z-index: 50; }
+    .lang-trigger:hover .lang-dropdown, .lang-trigger:focus-within .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; color: var(--text); }
+    .lang-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .lang-option { display: flex; align-items: center; gap: 6px; width: 100%; padding: 8px 14px; border: none; background: none; cursor: pointer; font-size: 13px; text-align: left; color: var(--text); }
+    .lang-option:hover { background: #f0f5ff; }
+    .lang-option.active { background: #e0ebff; color: var(--brand); font-weight: 600; }
+    [data-i18n] { transition: opacity 0.15s; }
   </style>
 </head>
 <body>
   <header>
     <a class="brand" href="/">toolconv</a>
     <nav aria-label="Main navigation">
-      <a href="/about">About</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="/contact">Contact</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/privacy" data-i18n="nav.privacy">Privacy</a>
+      <a href="/terms" data-i18n="nav.terms">Terms</a>
+      <a href="/contact" data-i18n="nav.contact">Contact</a>
+      <div class="lang-trigger">
+        <button class="lang-btn" aria-label="Switch language">
+          🌐 <span id="current-lang-label">EN</span> ▾
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en">🇺🇸 English</button>
+          <button class="lang-option" data-lang="zh">🇨🇳 简体中文</button>
+          <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+          <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+          <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+          <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+          <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+          <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+        </div>
+      </div>
     </nav>
   </header>
   <main>
-    <h1>About toolconv</h1>
-    <p>toolconv is a collection of free online conversion tools for everyday file, image, PDF, and measurement tasks. The project is built around a simple idea: useful tools should be fast, understandable, and respectful of user privacy.</p>
+    <h1 data-i18n="title">About toolconv</h1>
+    <p data-i18n="intro">toolconv is a collection of free online conversion tools for everyday file, image, PDF, and measurement tasks. The project is built around a simple idea: useful tools should be fast, understandable, and respectful of user privacy.</p>
 
-    <h2>What we provide</h2>
+    <h2 data-i18n="provide.title">What we provide</h2>
     <ul>
-      <li><a href="https://unit.toolconv.com">Unit converters</a> for length, weight, temperature, area, volume, speed, data, time, currency, and related measurement tasks.</li>
-      <li><a href="https://image.toolconv.com">Image tools</a> for compression, resizing, cropping, format conversion, watermarks, metadata removal, and other browser-based image workflows.</li>
-      <li><a href="https://pdf.toolconv.com">PDF tools</a> for merging, splitting, compressing, organizing, and converting PDF files.</li>
+      <li data-i18n="provide.unit"><a href="https://unit.toolconv.com">Unit converters</a> for length, weight, temperature, area, volume, speed, data, time, currency, and related measurement tasks.</li>
+      <li data-i18n="provide.image"><a href="https://image.toolconv.com">Image tools</a> for compression, resizing, cropping, format conversion, watermarks, metadata removal, and other browser-based image workflows.</li>
+      <li data-i18n="provide.pdf"><a href="https://pdf.toolconv.com">PDF tools</a> for merging, splitting, compressing, organizing, and converting PDF files.</li>
     </ul>
 
-    <h2>Our privacy-first approach</h2>
-    <p>Wherever technically possible, toolconv tools run locally in your browser. That means your files are processed on your device instead of being uploaded to a server. Some pages may display advertising or use privacy-conscious analytics, but file processing is kept separate from advertising and analytics systems.</p>
+    <h2 data-i18n="privacy.title">Our privacy-first approach</h2>
+    <p data-i18n="privacy.desc">Wherever technically possible, toolconv tools run locally in your browser. That means your files are processed on your device instead of being uploaded to a server. Some pages may display advertising or use privacy-conscious analytics, but file processing is kept separate from advertising and analytics systems.</p>
 
-    <h2>Publisher information</h2>
-    <p>toolconv.com is the main publisher domain for the toolconv family of sites, including unit.toolconv.com, image.toolconv.com, and pdf.toolconv.com. Questions, corrections, partnership requests, and support messages can be sent through the <a href="/contact">contact page</a>.</p>
+    <h2 data-i18n="publisher.title">Publisher information</h2>
+    <p data-i18n="publisher.desc">toolconv.com is the main publisher domain for the toolconv family of sites, including unit.toolconv.com, image.toolconv.com, and pdf.toolconv.com. Questions, corrections, partnership requests, and support messages can be sent through the <a href="/contact">contact page</a>.</p>
   </main>
   <footer>
-    &copy; 2026 toolconv. All rights reserved.
+    <span data-i18n="footer.copy">&copy; 2026 toolconv. All rights reserved.</span>
   </footer>
+
+  <script>
+  (function() {
+    const t = {
+      en: {
+        'nav.about': 'About', 'nav.privacy': 'Privacy', 'nav.terms': 'Terms', 'nav.contact': 'Contact',
+        'title': 'About toolconv',
+        'intro': 'toolconv is a collection of free online conversion tools for everyday file, image, PDF, and measurement tasks. The project is built around a simple idea: useful tools should be fast, understandable, and respectful of user privacy.',
+        'provide.title': 'What we provide',
+        'provide.unit': '<a href="https://unit.toolconv.com">Unit converters</a> for length, weight, temperature, area, volume, speed, data, time, currency, and related measurement tasks.',
+        'provide.image': '<a href="https://image.toolconv.com">Image tools</a> for compression, resizing, cropping, format conversion, watermarks, metadata removal, and other browser-based image workflows.',
+        'provide.pdf': '<a href="https://pdf.toolconv.com">PDF tools</a> for merging, splitting, compressing, organizing, and converting PDF files.',
+        'privacy.title': 'Our privacy-first approach',
+        'privacy.desc': 'Wherever technically possible, toolconv tools run locally in your browser. That means your files are processed on your device instead of being uploaded to a server. Some pages may display advertising or use privacy-conscious analytics, but file processing is kept separate from advertising and analytics systems.',
+        'publisher.title': 'Publisher information',
+        'publisher.desc': 'toolconv.com is the main publisher domain for the toolconv family of sites, including unit.toolconv.com, image.toolconv.com, and pdf.toolconv.com. Questions, corrections, partnership requests, and support messages can be sent through the <a href="/contact">contact page</a>.',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'About toolconv', 'meta.desc': 'Learn about toolconv, a privacy-first collection of browser-based unit, image, and PDF conversion tools.',
+      },
+      zh: {
+        'nav.about': '关于', 'nav.privacy': '隐私政策', 'nav.terms': '使用条款', 'nav.contact': '联系我们',
+        'title': '关于 toolconv',
+        'intro': 'toolconv 是一套免费的在线转换工具，用于日常文件、图片、PDF 和度量换算任务。项目的核心理念：好用的工具应该快速、易懂、尊重用户隐私。',
+        'provide.title': '我们提供的工具',
+        'provide.unit': '<a href="https://unit.toolconv.com">单位换算器</a>：长度、重量、温度、面积、体积、速度、数据、时间、货币及相关换算任务。',
+        'provide.image': '<a href="https://image.toolconv.com">图片工具</a>：压缩、调整大小、裁剪、格式转换、水印、元数据移除及其他浏览器端图片处理功能。',
+        'provide.pdf': '<a href="https://pdf.toolconv.com">PDF 工具</a>：合并、拆分、压缩、整理和转换 PDF 文件。',
+        'privacy.title': '隐私优先的理念',
+        'privacy.desc': '在技术上可行的情况下，toolconv 的工具均在浏览器本地运行。这意味着你的文件在本地设备上处理，而非上传到服务器。部分页面可能展示广告或使用注重隐私的分析工具，但文件处理与广告和分析系统完全分离。',
+        'publisher.title': '发布者信息',
+        'publisher.desc': 'toolconv.com 是 toolconv 系列网站的主要发布域名，包括 unit.toolconv.com、image.toolconv.com 和 pdf.toolconv.com。问题、纠错、合作请求和支持信息可通过<a href="/contact">联系页面</a>发送。',
+        'footer.copy': '© 2026 toolconv. 保留所有权利。',
+        'meta.title': '关于 toolconv', 'meta.desc': '了解 toolconv，一套注重隐私的浏览器端单位、图片和 PDF 转换工具。',
+      },
+      ja: {
+        'nav.about': '概要', 'nav.privacy': 'プライバシー', 'nav.terms': '利用規約', 'nav.contact': 'お問い合わせ',
+        'title': 'toolconv について',
+        'intro': 'toolconv は日常のファイル、画像、PDF、計測タスクのための無料オンライン変換ツール集です。プロジェクトの理念：便利なツールは高速で分かりやすく、ユーザーのプライバシーを尊重すべきです。',
+        'provide.title': '提供するツール',
+        'provide.unit': '<a href="https://unit.toolconv.com">単位変換</a>：長さ、重さ、温度、面積、体積、速度、データ、時間、通貨などの変換タスク。',
+        'provide.image': '<a href="https://image.toolconv.com">画像ツール</a>：圧縮、リサイズ、トリミング、フォーマット変換、透かし、メタデータ削除などのブラウザベースの画像ワークフロー。',
+        'provide.pdf': '<a href="https://pdf.toolconv.com">PDF ツール</a>：PDF の結合、分割、圧縮、整理、変換。',
+        'privacy.title': 'プライバシーファーストのアプローチ',
+        'privacy.desc': '技術的に可能な限り、toolconv のツールはブラウザ上でローカルに実行されます。つまり、ファイルはサーバーにアップロードされるのではなく、お使いのデバイスで処理されます。一部のページでは広告やプライバシーに配慮した分析が使用される場合がありますが、ファイル処理は広告・分析システムとは完全に分離されています。',
+        'publisher.title': '運営者情報',
+        'publisher.desc': 'toolconv.com は toolconv ファミリーサイトの主要パブリッシャードメインで、unit.toolconv.com、image.toolconv.com、pdf.toolconv.com を含みます。ご質問、修正、パートナーシップのご要望、サポートメッセージは<a href="/contact">お問い合わせページ</a>からお送りください。',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'toolconv について', 'meta.desc': 'toolconv について — プライバシー重視のブラウザベース単位変換、画像、PDF ツール。',
+      },
+      ko: {
+        'nav.about': '소개', 'nav.privacy': '개인정보', 'nav.terms': '이용약관', 'nav.contact': '연락처',
+        'title': 'toolconv 소개',
+        'intro': 'toolconv은 일상적인 파일, 이미지, PDF 및 측정 작업을 위한 무료 온라인 변환 도구 모음입니다. 프로젝트의 핵심 아이디어: 유용한 도구는 빠르고, 이해하기 쉽고, 사용자 개인정보를 존중해야 합니다.',
+        'provide.title': '제공하는 도구',
+        'provide.unit': '<a href="https://unit.toolconv.com">단위 변환기</a>: 길이, 무게, 온도, 면적, 부피, 속도, 데이터, 시간, 통화 및 관련 측정 작업.',
+        'provide.image': '<a href="https://image.toolconv.com">이미지 도구</a>: 압축, 크기 조정, 자르기, 형식 변환, 워터마크, 메타데이터 제거 및 기타 브라우저 기반 이미지 워크플로우.',
+        'provide.pdf': '<a href="https://pdf.toolconv.com">PDF 도구</a>: PDF 파일 병합, 분할, 압축, 정리 및 변환.',
+        'privacy.title': '개인정보 보호 우선 접근',
+        'privacy.desc': '기술적으로 가능한 경우 toolconv 도구는 브라우저에서 로컬로 실행됩니다. 즉, 파일이 서버에 업로드되지 않고 기기에서 처리됩니다. 일부 페이지에는 광고나 개인정보 보호 분석이 표시될 수 있지만, 파일 처리는 광고 및 분석 시스템과 분리되어 있습니다.',
+        'publisher.title': '운영자 정보',
+        'publisher.desc': 'toolconv.com은 toolconv 패밀리 사이트의 주요 게시자 도메인으로, unit.toolconv.com, image.toolconv.com, pdf.toolconv.com을 포함합니다. 질문, 수정, 파트너십 요청 및 지원 메시지는 <a href="/contact">연락처 페이지</a>를 통해 보내주시기 바랍니다.',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'toolconv 소개', 'meta.desc': 'toolconv 소개 — 개인정보 보호 중심의 브라우저 기반 단위 변환, 이미지 및 PDF 도구.',
+      },
+      es: {
+        'nav.about': 'Acerca de', 'nav.privacy': 'Privacidad', 'nav.terms': 'Términos', 'nav.contact': 'Contacto',
+        'title': 'Acerca de toolconv',
+        'intro': 'toolconv es una colección de herramientas de conversión en línea gratuitas para tareas cotidianas de archivos, imágenes, PDF y medidas. El proyecto se basa en una idea simple: las herramientas útiles deben ser rápidas, comprensibles y respetuosas con la privacidad del usuario.',
+        'provide.title': 'Lo que ofrecemos',
+        'provide.unit': '<a href="https://unit.toolconv.com">Conversores de unidades</a> para longitud, peso, temperatura, área, volumen, velocidad, datos, tiempo, moneda y tareas de medición relacionadas.',
+        'provide.image': '<a href="https://image.toolconv.com">Herramientas de imagen</a> para compresión, redimensión, recorte, conversión de formato, marcas de agua, eliminación de metadatos y otros flujos de trabajo de imagen en el navegador.',
+        'provide.pdf': '<a href="https://pdf.toolconv.com">Herramientas PDF</a> para fusionar, dividir, comprimir, organizar y convertir archivos PDF.',
+        'privacy.title': 'Nuestro enfoque de privacidad primero',
+        'privacy.desc': 'Siempre que sea técnicamente posible, las herramientas de toolconv se ejecutan localmente en tu navegador. Esto significa que tus archivos se procesan en tu dispositivo en lugar de subirse a un servidor. Algunas páginas pueden mostrar publicidad o usar analíticas respetuosas con la privacidad, pero el procesamiento de archivos se mantiene separado de los sistemas de publicidad y analíticas.',
+        'publisher.title': 'Información del editor',
+        'publisher.desc': 'toolconv.com es el dominio principal del editor de la familia de sitios toolconv, incluyendo unit.toolconv.com, image.toolconv.com y pdf.toolconv.com. Preguntas, correcciones, solicitudes de asociación y mensajes de soporte pueden enviarse a través de la <a href="/contact">página de contacto</a>.',
+        'footer.copy': '© 2026 toolconv. Todos los derechos reservados.',
+        'meta.title': 'Acerca de toolconv', 'meta.desc': 'Conoce toolconv, una colección de herramientas de conversión basadas en el navegador centradas en la privacidad.',
+      },
+      fr: {
+        'nav.about': 'À propos', 'nav.privacy': 'Confidentialité', 'nav.terms': 'Conditions', 'nav.contact': 'Contact',
+        'title': 'À propos de toolconv',
+        'intro': 'toolconv est une collection d\'outils de conversion en ligne gratuits pour les tâches courantes de fichiers, d\'images, de PDF et de mesures. Le projet repose sur une idée simple : les outils utiles doivent être rapides, compréhensibles et respectueux de la vie privée des utilisateurs.',
+        'provide.title': 'Ce que nous offrons',
+        'provide.unit': '<a href="https://unit.toolconv.com">Convertisseurs d\'unités</a> pour la longueur, le poids, la température, la surface, le volume, la vitesse, les données, le temps, les devises et les tâches de mesure associées.',
+        'provide.image': '<a href="https://image.toolconv.com">Outils d\'image</a> pour la compression, le redimensionnement, le recadrage, la conversion de format, les filigranes, la suppression de métadonnées et d\'autres flux de travail d\'image dans le navigateur.',
+        'provide.pdf': '<a href="https://pdf.toolconv.com">Outils PDF</a> pour fusionner, diviser, compresser, organiser et convertir des fichiers PDF.',
+        'privacy.title': 'Notre approche privacy-first',
+        'privacy.desc': 'Chaque fois que c\'est techniquement possible, les outils toolconv s\'exécutent localement dans votre navigateur. Cela signifie que vos fichiers sont traités sur votre appareil au lieu d\'être téléchargés vers un serveur. Certaines pages peuvent afficher de la publicité ou utiliser des analyses respectueuses de la vie privée, mais le traitement des fichiers est séparé des systèmes publicitaires et analytiques.',
+        'publisher.title': 'Informations sur l\'éditeur',
+        'publisher.desc': 'toolconv.com est le domaine principal de l\'éditeur de la famille de sites toolconv, incluant unit.toolconv.com, image.toolconv.com et pdf.toolconv.com. Les questions, corrections, demandes de partenariat et messages de support peuvent être envoyés via la <a href="/contact">page de contact</a>.',
+        'footer.copy': '© 2026 toolconv. Tous droits réservés.',
+        'meta.title': 'À propos de toolconv', 'meta.desc': 'Découvrez toolconv, une collection d\'outils de conversion dans le navigateur axés sur la confidentialité.',
+      },
+      de: {
+        'nav.about': 'Über uns', 'nav.privacy': 'Datenschutz', 'nav.terms': 'Nutzungsbedingungen', 'nav.contact': 'Kontakt',
+        'title': 'Über toolconv',
+        'intro': 'toolconv ist eine Sammlung kostenloser Online-Konvertierungstools für alltägliche Datei-, Bild-, PDF- und Messtechnikaufgaben. Das Projekt basiert auf einer einfachen Idee: Nützliche Tools sollten schnell, verständlich und respektvoll gegenüber der Privatsphäre der Nutzer sein.',
+        'provide.title': 'Was wir anbieten',
+        'provide.unit': '<a href="https://unit.toolconv.com">Einheitenrechner</a> für Länge, Gewicht, Temperatur, Fläche, Volumen, Geschwindigkeit, Daten, Zeit, Währung und verwandte Messtechnikaufgaben.',
+        'provide.image': '<a href="https://image.toolconv.com">Bildwerkzeuge</a> für Komprimierung, Skalierung, Zuschneiden, Formatkonvertierung, Wasserzeichen, Metadatenentfernung und andere browserbasierte Bild-Workflows.',
+        'provide.pdf': '<a href="https://pdf.toolconv.com">PDF-Tools</a> zum Zusammenführen, Teilen, Komprimieren, Organisieren und Konvertieren von PDF-Dateien.',
+        'privacy.title': 'Unser Privacy-First-Ansatz',
+        'privacy.desc': 'Wo immer technisch möglich, laufen toolconv-Tools lokal in Ihrem Browser. Das bedeutet, dass Ihre Dateien auf Ihrem Gerät verarbeitet werden, statt auf einen Server hochgeladen zu werden. Einige Seiten können Werbung oder datenschutzbewusste Analysen anzeigen, aber die Dateiverarbeitung ist von Werbe- und Analysesystemen getrennt.',
+        'publisher.title': 'Herausgeberinformationen',
+        'publisher.desc': 'toolconv.com ist die Haupt-Herausgeberdomain der toolconv-Websitefamilie, einschließlich unit.toolconv.com, image.toolconv.com und pdf.toolconv.com. Fragen, Korrekturen, Partnerschaftsanfragen und Support-Nachrichten können über die <a href="/contact">Kontaktseite</a> gesendet werden.',
+        'footer.copy': '© 2026 toolconv. Alle Rechte vorbehalten.',
+        'meta.title': 'Über toolconv', 'meta.desc': 'Erfahren Sie mehr über toolconv — datenschutzfreundliche browserbasierte Konvertierungstools.',
+      },
+      pt: {
+        'nav.about': 'Sobre', 'nav.privacy': 'Privacidade', 'nav.terms': 'Termos', 'nav.contact': 'Contato',
+        'title': 'Sobre o toolconv',
+        'intro': 'toolconv é uma coleção de ferramentas de conversão online gratuitas para tarefas diárias de arquivos, imagens, PDF e medições. O projeto é construído em torno de uma ideia simples: ferramentas úteis devem ser rápidas, compreensíveis e respeitosas com a privacidade do usuário.',
+        'provide.title': 'O que oferecemos',
+        'provide.unit': '<a href="https://unit.toolconv.com">Conversores de unidades</a> para comprimento, peso, temperatura, área, volume, velocidade, dados, tempo, moeda e tarefas de medição relacionadas.',
+        'provide.image': '<a href="https://image.toolconv.com">Ferramentas de imagem</a> para compressão, redimensionamento, corte, conversão de formato, marca d\'água, remoção de metadados e outros fluxos de trabalho de imagem no navegador.',
+        'provide.pdf': '<a href="https://pdf.toolconv.com">Ferramentas PDF</a> para juntar, dividir, comprimir, organizar e converter arquivos PDF.',
+        'privacy.title': 'Nossa abordagem de privacidade primeiro',
+        'privacy.desc': 'Sempre que tecnicamente possível, as ferramentas do toolconv são executadas localmente no seu navegador. Isso significa que seus arquivos são processados no seu dispositivo em vez de serem enviados para um servidor. Algumas páginas podem exibir publicidade ou usar análises respeitosas da privacidade, mas o processamento de arquivos é mantido separado dos sistemas de publicidade e análises.',
+        'publisher.title': 'Informações do editor',
+        'publisher.desc': 'toolconv.com é o domínio principal do editor da família de sites toolconv, incluindo unit.toolconv.com, image.toolconv.com e pdf.toolconv.com. Perguntas, correções, solicitações de parceria e mensagens de suporte podem ser enviadas pela <a href="/contact">página de contato</a>.',
+        'footer.copy': '© 2026 toolconv. Todos os direitos reservados.',
+        'meta.title': 'Sobre o toolconv', 'meta.desc': 'Conheça o toolconv, uma coleção de ferramentas de conversão no navegador focadas em privacidade.',
+      },
+    };
+    const langLabels = { en:'EN', zh:'中文', ja:'日本語', ko:'한국어', es:'ES', fr:'FR', de:'DE', pt:'PT' };
+    function getLang() {
+      var m = document.cookie.match('(^|;)\\s*toolconv_lang\\s*=\\s*([^;]+)');
+      if (m && t[m[2]]) return m[2];
+      var s = localStorage.getItem('toolconv-lang');
+      if (s && t[s]) return s;
+      var n = (navigator.language||'en').split('-')[0];
+      return t[n] ? n : 'en';
+    }
+    function setLang(lang) {
+      localStorage.setItem('toolconv-lang', lang);
+      document.cookie = 'toolconv_lang='+lang+';domain=.toolconv.com;path=/;max-age=31536000;SameSite=Lax';
+      document.documentElement.lang = lang;
+      applyLang(lang);
+    }
+    function applyLang(lang) {
+      var d = t[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!==undefined) el.innerHTML=d[k]; });
+      var lbl=document.getElementById('current-lang-label'); if(lbl) lbl.textContent=langLabels[lang]||lang.toUpperCase();
+      if(d['meta.title']){ var te=document.getElementById('page-title'); if(te) te.textContent=d['meta.title']; }
+      if(d['meta.desc']){ var de=document.getElementById('meta-desc'); if(de) de.setAttribute('content',d['meta.desc']); }
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active',b.dataset.lang===lang); });
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+      var lang=getLang(); setLang(lang);
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.lang); }); });
+    });
+  })();
+  </script>
 </body>
 </html>

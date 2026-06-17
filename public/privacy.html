@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang-default="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy - toolconv</title>
-  <meta name="description" content="toolconv privacy policy covering browser-based file processing, advertising, analytics, cookies, and contact information.">
+  <title id="page-title">Privacy Policy - toolconv</title>
+  <meta id="meta-desc" name="description" content="toolconv privacy policy covering browser-based file processing, advertising, analytics, cookies, and contact information.">
   <link rel="canonical" href="https://toolconv.com/privacy">
   <style>
     :root { color-scheme: light; --brand: #3b5de7; --text: #111827; --muted: #4b5563; --line: #e5e7eb; --bg: #f8fafc; }
@@ -12,7 +12,7 @@
     body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
     header, main, footer { max-width: 880px; margin: 0 auto; padding: 24px; }
     header { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); background: #fff; }
-    nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; align-items: center; }
     a { color: var(--brand); text-decoration: none; }
     a:hover, a:focus { text-decoration: underline; }
     .brand { font-weight: 800; color: var(--text); }
@@ -23,54 +23,324 @@
     ul { padding-left: 22px; }
     .updated { color: #6b7280; font-size: 14px; }
     footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; background: #fff; }
+    
+    /* Language switcher */
+    .lang-trigger { position: relative; }
+    .lang-dropdown { opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s ease; position: absolute; right: 0; top: 100%; margin-top: 4px; width: 160px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 6px 0; z-index: 50; }
+    .lang-trigger:hover .lang-dropdown, .lang-trigger:focus-within .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; color: var(--text); }
+    .lang-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .lang-option { display: flex; align-items: center; gap: 6px; width: 100%; padding: 8px 14px; border: none; background: none; cursor: pointer; font-size: 13px; text-align: left; color: var(--text); }
+    .lang-option:hover { background: #f0f5ff; }
+    .lang-option.active { background: #e0ebff; color: var(--brand); font-weight: 600; }
+    [data-i18n] { transition: opacity 0.15s; }
+
   </style>
 </head>
 <body>
   <header>
     <a class="brand" href="/">toolconv</a>
     <nav aria-label="Main navigation">
-      <a href="/about">About</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="/contact">Contact</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/privacy" data-i18n="nav.privacy">Privacy</a>
+      <a href="/terms" data-i18n="nav.terms">Terms</a>
+      <a href="/contact" data-i18n="nav.contact">Contact</a>
+      
+      <div class="lang-trigger">
+        <button class="lang-btn" aria-label="Switch language">
+          🌐 <span id="current-lang-label">EN</span> ▾
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en">🇺🇸 English</button>
+          <button class="lang-option" data-lang="zh">🇨🇳 简体中文</button>
+          <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+          <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+          <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+          <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+          <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+          <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+        </div>
+      </div>
+
     </nav>
   </header>
   <main>
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: June 16, 2026</p>
-    <p>This policy explains how toolconv.com and related toolconv subdomains handle information when you use our browser-based conversion tools.</p>
+    <h1 data-i18n="title">Privacy Policy</h1>
+    <p class="updated" data-i18n="updated">Last updated: June 16, 2026</p>
+    <p data-i18n="intro">This policy explains how toolconv.com and related toolconv subdomains handle information when you use our browser-based conversion tools.</p>
 
-    <h2>File processing</h2>
-    <p>Our tools are designed to process files locally in your browser whenever technically possible. Files you select for browser-based tools are not intentionally uploaded to toolconv servers for processing. Your files remain on your device unless a specific feature clearly states otherwise.</p>
+    <h2 data-i18n="file.title">File processing</h2>
+    <p data-i18n="file.desc">Our tools are designed to process files locally in your browser whenever technically possible. Files you select for browser-based tools are not intentionally uploaded to toolconv servers for processing. Your files remain on your device unless a specific feature clearly states otherwise.</p>
 
-    <h2>Information we may receive</h2>
+    <h2 data-i18n="info.title">Information we may receive</h2>
     <ul>
-      <li>Basic technical information sent automatically by your browser, such as IP address, user agent, referring page, and request time.</li>
-      <li>Messages and email addresses you choose to provide when contacting us.</li>
-      <li>Aggregated usage information from analytics or hosting providers, where enabled on a toolconv subdomain.</li>
+      <li data-i18n="info.li1">Basic technical information sent automatically by your browser, such as IP address, user agent, referring page, and request time.</li>
+      <li data-i18n="info.li2">Messages and email addresses you choose to provide when contacting us.</li>
+      <li data-i18n="info.li3">Aggregated usage information from analytics or hosting providers, where enabled on a toolconv subdomain.</li>
     </ul>
 
-    <h2>Advertising and cookies</h2>
-    <p>toolconv may use Google AdSense to display advertisements. Google and its partners may use cookies, web beacons, IP addresses, device identifiers, and similar technologies to serve, measure, and personalize ads. You can learn more in Google's privacy policy at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> and manage ad settings at <a href="https://adssettings.google.com">adssettings.google.com</a>.</p>
+    <h2 data-i18n="ads.title">Advertising and cookies</h2>
+    <p data-i18n="ads.desc">toolconv may use Google AdSense to display advertisements. Google and its partners may use cookies, web beacons, IP addresses, device identifiers, and similar technologies to serve, measure, and personalize ads. You can learn more in Google's privacy policy at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> and manage ad settings at <a href="https://adssettings.google.com">adssettings.google.com</a>.</p>
 
-    <h2>Analytics</h2>
-    <p>Some toolconv subdomains may use privacy-conscious analytics or platform analytics to understand site performance and usage. Analytics data is used to improve reliability, content quality, and user experience. We do not use analytics to inspect your files.</p>
+    <h2 data-i18n="analytics.title">Analytics</h2>
+    <p data-i18n="analytics.desc">Some toolconv subdomains may use privacy-conscious analytics or platform analytics to understand site performance and usage. Analytics data is used to improve reliability, content quality, and user experience. We do not use analytics to inspect your files.</p>
 
-    <h2>Third-party links</h2>
-    <p>toolconv pages may link to sibling toolconv subdomains, advertising partners, documentation, or other third-party websites. Those sites have their own privacy practices, and their policies apply when you visit them.</p>
+    <h2 data-i18n="third.title">Third-party links</h2>
+    <p data-i18n="third.desc">toolconv pages may link to sibling toolconv subdomains, advertising partners, documentation, or other third-party websites. Those sites have their own privacy practices, and their policies apply when you visit them.</p>
 
-    <h2>Your choices</h2>
+    <h2 data-i18n="choices.title">Your choices</h2>
     <ul>
-      <li>You can block or delete cookies in your browser settings.</li>
-      <li>You can avoid selecting files if you do not want a tool to process them locally in your browser.</li>
-      <li>You can contact us to request deletion of support messages you previously sent.</li>
+      <li data-i18n="choices.li1">You can block or delete cookies in your browser settings.</li>
+      <li data-i18n="choices.li2">You can avoid selecting files if you do not want a tool to process them locally in your browser.</li>
+      <li data-i18n="choices.li3">You can contact us to request deletion of support messages you previously sent.</li>
     </ul>
 
-    <h2>Contact</h2>
-    <p>For privacy questions, contact <a href="mailto:support@toolconv.com">support@toolconv.com</a>.</p>
+    <h2 data-i18n="contact.title">Contact</h2>
+    <p data-i18n="contact.desc">For privacy questions, contact <a href="mailto:support@toolconv.com">support@toolconv.com</a>.</p>
   </main>
   <footer>
-    &copy; 2026 toolconv. All rights reserved.
+    <span data-i18n="footer.copy">&copy; 2026 toolconv. All rights reserved.</span>
   </footer>
+  <script>
+  (function() {
+    const t = {
+      en: {
+        'nav.about': 'About', 'nav.privacy': 'Privacy', 'nav.terms': 'Terms', 'nav.contact': 'Contact',
+        'title': 'Privacy Policy',
+        'updated': 'Last updated: June 16, 2026',
+        'intro': 'This policy explains how toolconv.com and related toolconv subdomains handle information when you use our browser-based conversion tools.',
+        'file.title': 'File processing',
+        'file.desc': 'Our tools are designed to process files locally in your browser whenever technically possible. Files you select for browser-based tools are not intentionally uploaded to toolconv servers for processing. Your files remain on your device unless a specific feature clearly states otherwise.',
+        'info.title': 'Information we may receive',
+        'info.li1': 'Basic technical information sent automatically by your browser, such as IP address, user agent, referring page, and request time.',
+        'info.li2': 'Messages and email addresses you choose to provide when contacting us.',
+        'info.li3': 'Aggregated usage information from analytics or hosting providers, where enabled on a toolconv subdomain.',
+        'ads.title': 'Advertising and cookies',
+        'ads.desc': 'toolconv may use Google AdSense to display advertisements. Google and its partners may use cookies, web beacons, IP addresses, device identifiers, and similar technologies to serve, measure, and personalize ads. You can learn more in Google\'s privacy policy at <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> and manage ad settings at <a href="https://adssettings.google.com">adssettings.google.com</a>.',
+        'analytics.title': 'Analytics',
+        'analytics.desc': 'Some toolconv subdomains may use privacy-conscious analytics or platform analytics to understand site performance and usage. Analytics data is used to improve reliability, content quality, and user experience. We do not use analytics to inspect your files.',
+        'third.title': 'Third-party links',
+        'third.desc': 'toolconv pages may link to sibling toolconv subdomains, advertising partners, documentation, or other third-party websites. Those sites have their own privacy practices, and their policies apply when you visit them.',
+        'choices.title': 'Your choices',
+        'choices.li1': 'You can block or delete cookies in your browser settings.',
+        'choices.li2': 'You can avoid selecting files if you do not want a tool to process them locally in your browser.',
+        'choices.li3': 'You can contact us to request deletion of support messages you previously sent.',
+        'contact.title': 'Contact',
+        'contact.desc': 'For privacy questions, contact <a href="mailto:support@toolconv.com">support@toolconv.com</a>.',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'Privacy Policy - toolconv', 'meta.desc': 'toolconv privacy policy covering browser-based file processing, advertising, analytics, cookies, and contact information.',
+      },
+      zh: {
+        'nav.about': '关于', 'nav.privacy': '隐私政策', 'nav.terms': '使用条款', 'nav.contact': '联系我们',
+        'title': '隐私政策',
+        'updated': '最后更新：2026年6月16日',
+        'intro': '本政策说明 toolconv.com 及相关子域名在你使用我们的浏览器端转换工具时如何处理信息。',
+        'file.title': '文件处理',
+        'file.desc': '我们的工具在技术上可行时，会在浏览器本地处理文件。你选择的浏览器端工具文件不会被有意上传到 toolconv 服务器进行处理。除非特定功能明确说明，你的文件始终保留在你的设备上。',
+        'info.title': '我们可能接收的信息',
+        'info.li1': '浏览器自动发送的基本技术信息，如 IP 地址、用户代理、来源页面和请求时间。',
+        'info.li2': '你在联系我们时选择提供的消息和电子邮件地址。',
+        'info.li3': '在 toolconv 子域名上启用的分析或托管提供商提供的汇总使用信息。',
+        'ads.title': '广告和 Cookie',
+        'ads.desc': 'toolconv 可能使用 Google AdSense 展示广告。Google 及其合作伙伴可能使用 Cookie、网络信标、IP 地址、设备标识符及类似技术来投放、衡量和个性化广告。详情请参阅 Google 隐私政策 <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>，并在 <a href="https://adssettings.google.com">adssettings.google.com</a> 管理广告设置。',
+        'analytics.title': '分析',
+        'analytics.desc': '部分 toolconv 子域名可能使用注重隐私的分析或平台分析来了解网站性能和使用情况。分析数据用于改善可靠性、内容质量和用户体验。我们不会使用分析来检查你的文件。',
+        'third.title': '第三方链接',
+        'third.desc': 'toolconv 页面可能链接到兄弟子域名、广告合作伙伴、文档或其他第三方网站。这些网站有各自的隐私做法，访问时适用其政策。',
+        'choices.title': '你的选择',
+        'choices.li1': '你可以在浏览器设置中阻止或删除 Cookie。',
+        'choices.li2': '如果你不想让工具在浏览器中本地处理文件，可以不选择文件。',
+        'choices.li3': '你可以联系我们要求删除之前发送的支持消息。',
+        'contact.title': '联系方式',
+        'contact.desc': '隐私相关问题请联系 <a href="mailto:support@toolconv.com">support@toolconv.com</a>。',
+        'footer.copy': '© 2026 toolconv. 保留所有权利。',
+        'meta.title': '隐私政策 - toolconv', 'meta.desc': 'toolconv 隐私政策，涵盖浏览器端文件处理、广告、分析、Cookie 和联系方式。',
+      },
+      ja: {
+        'nav.about': '概要', 'nav.privacy': 'プライバシー', 'nav.terms': '利用規約', 'nav.contact': 'お問い合わせ',
+        'title': 'プライバシーポリシー',
+        'updated': '最終更新：2026年6月16日',
+        'intro': '本ポリシーは、toolconv.com および関連サブドメインがブラウザベースの変換ツールの使用時に情報をどのように扱うかを説明します。',
+        'file.title': 'ファイル処理',
+        'file.desc': '当ツールは技術的に可能な限り、ブラウザ上でローカルにファイルを処理するよう設計されています。ブラウザベースツールで選択されたファイルは、toolconv サーバーに意図的にアップロードされることはありません。特定の機能が明示的に別途説明しない限り、ファイルはお使いのデバイスに留まります。',
+        'info.title': '受け取る可能性のある情報',
+        'info.li1': 'ブラウザが自動的に送信する基本技術情報（IPアドレス、ユーザーエージェント、リファラ、リクエスト時刻など）。',
+        'info.li2': 'お問い合わせ時にご提供いただいたメッセージやメールアドレス。',
+        'info.li3': 'toolconv サブドメインで有効な分析またはホスティングプロバイダからの集計使用情報。',
+        'ads.title': '広告とクッキー',
+        'ads.desc': 'toolconv は Google AdSense を使用して広告を表示する場合があります。Google とそのパートナーは、広告の配信、測定、パーソナライズのためにクッキー、ウェブビーコン、IPアドレス、デバイス識別子などの技術を使用する場合があります。詳しくは <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> をご覧ください。広告設定は <a href="https://adssettings.google.com">adssettings.google.com</a> で管理できます。',
+        'analytics.title': '分析',
+        'analytics.desc': '一部の toolconv サブドメインでは、プライバシーに配慮した分析を使用してサイトのパフォーマンスと使用状況を把握する場合があります。分析データは信頼性、コンテンツ品質、ユーザー体験の向上に使用されます。ファイルの検査に分析を使用することはありません。',
+        'third.title': 'サードパーティリンク',
+        'third.desc': 'toolconv ページは兄弟サブドメイン、広告パートナー、ドキュメント、その他のサードパーティウェブサイトにリンクする場合があります。これらのサイトには独自のプライバシー慣行があり、訪問時にはそのポリシーが適用されます。',
+        'choices.title': 'あなたの選択',
+        'choices.li1': 'ブラウザの設定でクッキーをブロックまたは削除できます。',
+        'choices.li2': 'ツールにファイルをローカルで処理させたくない場合は、ファイルを選択しないでください。',
+        'choices.li3': '以前に送信したサポートメッセージの削除をリクエストできます。',
+        'contact.title': 'お問い合わせ',
+        'contact.desc': 'プライバシーに関するご質問は <a href="mailto:support@toolconv.com">support@toolconv.com</a> まで。',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'プライバシーポリシー - toolconv', 'meta.desc': 'toolconv プライバシーポリシー — ブラウザベースのファイル処理、広告、分析、クッキー、連絡先情報。',
+      },
+      ko: {
+        'nav.about': '소개', 'nav.privacy': '개인정보', 'nav.terms': '이용약관', 'nav.contact': '연락처',
+        'title': '개인정보 보호정책',
+        'updated': '최종 업데이트: 2026년 6월 16일',
+        'intro': '본 정책은 toolconv.com 및 관련 서브도메인이 브라우저 기반 변환 도구 사용 시 정보를 어떻게 처리하는지 설명합니다.',
+        'file.title': '파일 처리',
+        'file.desc': '당사 도구는 기술적으로 가능한 경우 브라우저에서 로컬로 파일을 처리하도록 설계되었습니다. 브라우저 기반 도구에서 선택한 파일은 toolconv 서버에 의도적으로 업로드되지 않습니다. 특정 기능이 명시적으로 다르게 stated하지 않는 한, 파일은 기기에 남습니다.',
+        'info.title': '수신할 수 있는 정보',
+        'info.li1': '브라우저가 자동으로 보내는 기본 기술 정보(IP 주소, 사용자 에이전트, 참조 페이지, 요청 시간 등).',
+        'info.li2': '문의 시 자발적으로 제공한 메시지 및 이메일 주소.',
+        'info.li3': 'toolconv 서브도메인에서 활성화된 분석 또는 호스팅 제공업체의 집계 사용 정보.',
+        'ads.title': '광고 및 쿠키',
+        'ads.desc': 'toolconv은 Google AdSense를 사용하여 광고를 표시할 수 있습니다. Google 및 파트너는 쿠키, 웹 비콘, IP 주소, 기기 식별자 등의 기술을 사용하여 광고를 제공, 측정 및 개인화할 수 있습니다. 자세한 내용은 <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>에서 확인하고 <a href="https://adssettings.google.com">adssettings.google.com</a>에서 광고 설정을 관리하세요.',
+        'analytics.title': '분석',
+        'analytics.desc': '일부 toolconv 서브도메인은 개인정보 보호 분석을 사용하여 사이트 성능과 사용량을 파악할 수 있습니다. 분석 데이터는 안정성, 콘텐츠 품질 및 사용자 경험 개선에 사용됩니다. 파일 검사에 분석을 사용하지 않습니다.',
+        'third.title': '제3자 링크',
+        'third.desc': 'toolconv 페이지는 형제 서브도메인, 광고 파트너, 문서 또는 기타 제3자 웹사이트에 링크할 수 있습니다. 해당 사이트에는 고유한 개인정보 관행이 있으며, 방문 시 해당 정책이 적용됩니다.',
+        'choices.title': '귀하의 선택',
+        'choices.li1': '브라우저 설정에서 쿠키를 차단하거나 삭제할 수 있습니다.',
+        'choices.li2': '도구가 브라우저에서 로컬로 파일을 처리하는 것을 원하지 않으면 파일을 선택하지 마세요.',
+        'choices.li3': '이전에 보낸 지원 메시지의 삭제를 요청할 수 있습니다.',
+        'contact.title': '연락처',
+        'contact.desc': '개인정보 관련 질문은 <a href="mailto:support@toolconv.com">support@toolconv.com</a>으로 문의하세요.',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': '개인정보 보호정책 - toolconv', 'meta.desc': 'toolconv 개인정보 보호정책 — 브라우저 기반 파일 처리, 광고, 분석, 쿠키 및 연락처 정보.',
+      },
+      es: {
+        'nav.about': 'Acerca de', 'nav.privacy': 'Privacidad', 'nav.terms': 'Términos', 'nav.contact': 'Contacto',
+        'title': 'Política de Privacidad',
+        'updated': 'Última actualización: 16 de junio de 2026',
+        'intro': 'Esta política explica cómo toolconv.com y los subdominios relacionados manejan la información cuando usas nuestras herramientas de conversión basadas en el navegador.',
+        'file.title': 'Procesamiento de archivos',
+        'file.desc': 'Nuestras herramientas están diseñadas para procesar archivos localmente en tu navegador siempre que sea técnicamente posible. Los archivos que seleccionas para herramientas basadas en el navegador no se suben intencionalmente a los servidores de toolconv. Tus archivos permanecen en tu dispositivo a menos que una función específica indique claramente lo contrario.',
+        'info.title': 'Información que podemos recibir',
+        'info.li1': 'Información técnica básica enviada automáticamente por tu navegador, como dirección IP, agente de usuario, página de referencia y hora de solicitud.',
+        'info.li2': 'Mensajes y direcciones de correo electrónico que decides proporcionar al contactarnos.',
+        'info.li3': 'Información de uso agregada de proveedores de análisis o alojamiento, cuando esté habilitado en un subdominio de toolconv.',
+        'ads.title': 'Publicidad y cookies',
+        'ads.desc': 'toolconv puede usar Google AdSense para mostrar anuncios. Google y sus socios pueden usar cookies, balizas web, direcciones IP, identificadores de dispositivo y tecnologías similares para servir, medir y personalizar anuncios. Más información en <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> y gestiona la configuración en <a href="https://adssettings.google.com">adssettings.google.com</a>.',
+        'analytics.title': 'Análisis',
+        'analytics.desc': 'Algunos subdominios de toolconv pueden usar análisis respetuosos de la privacidad para comprender el rendimiento y uso del sitio. Los datos de análisis se usan para mejorar la fiabilidad, calidad del contenido y experiencia del usuario. No usamos análisis para inspeccionar tus archivos.',
+        'third.title': 'Enlaces de terceros',
+        'third.desc': 'Las páginas de toolconv pueden enlazar a subdominios hermanos, socios publicitarios, documentación u otros sitios web de terceros. Estos sitios tienen sus propias prácticas de privacidad.',
+        'choices.title': 'Tus opciones',
+        'choices.li1': 'Puedes bloquear o eliminar cookies en la configuración de tu navegador.',
+        'choices.li2': 'Puedes evitar seleccionar archivos si no quieres que una herramienta los procese localmente.',
+        'choices.li3': 'Puedes contactarnos para solicitar la eliminación de mensajes de soporte enviados anteriormente.',
+        'contact.title': 'Contacto',
+        'contact.desc': 'Para preguntas de privacidad, contacta <a href="mailto:support@toolconv.com">support@toolconv.com</a>.',
+        'footer.copy': '© 2026 toolconv. Todos los derechos reservados.',
+        'meta.title': 'Política de Privacidad - toolconv', 'meta.desc': 'Política de privacidad de toolconv sobre procesamiento de archivos, publicidad, análisis, cookies e información de contacto.',
+      },
+      fr: {
+        'nav.about': 'À propos', 'nav.privacy': 'Confidentialité', 'nav.terms': 'Conditions', 'nav.contact': 'Contact',
+        'title': 'Politique de Confidentialité',
+        'updated': 'Dernière mise à jour : 16 juin 2026',
+        'intro': 'Cette politique explique comment toolconv.com et les sous-domaines associés traitent les informations lorsque vous utilisez nos outils de conversion basés sur le navigateur.',
+        'file.title': 'Traitement des fichiers',
+        'file.desc': 'Nos outils sont conçus pour traiter les fichiers localement dans votre navigateur chaque fois que c'est techniquement possible. Les fichiers que vous sélectionnez pour les outils basés sur le navigateur ne sont pas intentionnellement téléchargés vers les serveurs toolconv. Vos fichiers restent sur votre appareil sauf si une fonctionnalité spécifique indique clairement le contraire.',
+        'info.title': 'Informations que nous pouvons recevoir',
+        'info.li1': 'Informations techniques de base envoyées automatiquement par votre navigateur, telles que l'adresse IP, l'agent utilisateur, la page de référence et l'heure de la requête.',
+        'info.li2': 'Messages et adresses e-mail que vous choisissez de fournir en nous contactant.',
+        'info.li3': 'Informations d'utilisation agrégées provenant de fournisseurs d'analyse ou d'hébergement, lorsque cela est activé sur un sous-domaine toolconv.',
+        'ads.title': 'Publicité et cookies',
+        'ads.desc': 'toolconv peut utiliser Google AdSense pour afficher des publicités. Google et ses partenaires peuvent utiliser des cookies, des balises web, des adresses IP, des identifiants d'appareil et des technologies similaires pour diffuser, mesurer et personnaliser les annonces. Plus d'informations sur <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> et gérez les paramètres sur <a href="https://adssettings.google.com">adssettings.google.com</a>.',
+        'analytics.title': 'Analytique',
+        'analytics.desc': 'Certains sous-domaines toolconv peuvent utiliser des analyses respectueuses de la vie privée pour comprendre les performances et l'utilisation du site. Les données d'analyse sont utilisées pour améliorer la fiabilité, la qualité du contenu et l'expérience utilisateur. Nous n'utilisons pas l'analyse pour inspecter vos fichiers.',
+        'third.title': 'Liens tiers',
+        'third.desc': 'Les pages toolconv peuvent contenir des liens vers des sous-domaines frères, des partenaires publicitaires, de la documentation ou d'autres sites web tiers. Ces sites ont leurs propres pratiques de confidentialité.',
+        'choices.title': 'Vos choix',
+        'choices.li1': 'Vous pouvez bloquer ou supprimer les cookies dans les paramètres de votre navigateur.',
+        'choices.li2': 'Vous pouvez éviter de sélectionner des fichiers si vous ne souhaitez pas qu'un outil les traite localement.',
+        'choices.li3': 'Vous pouvez nous contacter pour demander la suppression de messages de support précédemment envoyés.',
+        'contact.title': 'Contact',
+        'contact.desc': 'Pour les questions de confidentialité, contactez <a href="mailto:support@toolconv.com">support@toolconv.com</a>.',
+        'footer.copy': '© 2026 toolconv. Tous droits réservés.',
+        'meta.title': 'Politique de Confidentialité - toolconv', 'meta.desc': 'Politique de confidentialité toolconv couvrant le traitement des fichiers, la publicité, l'analyse, les cookies et les coordonnées.',
+      },
+      de: {
+        'nav.about': 'Über uns', 'nav.privacy': 'Datenschutz', 'nav.terms': 'Nutzungsbedingungen', 'nav.contact': 'Kontakt',
+        'title': 'Datenschutzerklärung',
+        'updated': 'Zuletzt aktualisiert: 16. Juni 2026',
+        'intro': 'Diese Richtlinie erklärt, wie toolconv.com und verwandte Subdomains Informationen verarbeiten, wenn Sie unsere browserbasierten Konvertierungstools verwenden.',
+        'file.title': 'Dateiverarbeitung',
+        'file.desc': 'Unsere Tools sind so konzipiert, dass sie Dateien nach Möglichkeit lokal in Ihrem Browser verarbeiten. Dateien, die Sie für browserbasierte Tools auswählen, werden nicht absichtlich auf toolconv-Server hochgeladen. Ihre Dateien verbleiben auf Ihrem Gerät, es sei denn, eine bestimmte Funktion gibt etwas anderes ausdrücklich an.',
+        'info.title': 'Informationen, die wir erhalten können',
+        'info.li1': 'Grundlegende technische Informationen, die Ihr Browser automatisch sendet, wie IP-Adresse, User-Agent, Referrer und Anfragezeit.',
+        'info.li2': 'Nachrichten und E-Mail-Adressen, die Sie uns bei Kontaktaufnahme freiwillig zur Verfügung stellen.',
+        'info.li3': 'Aggregierte Nutzungsinformationen von Analyse- oder Hosting-Anbietern, sofern auf einem toolconv-Subdomain aktiviert.',
+        'ads.title': 'Werbung und Cookies',
+        'ads.desc': 'toolconv kann Google AdSense zur Anzeige von Werbung verwenden. Google und seine Partner können Cookies, Web-Beacons, IP-Adressen, Gerätekennungen und ähnliche Technologien nutzen, um Werbung zu liefern, zu messen und zu personalisieren. Weitere Informationen unter <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>; Anzeigeneinstellungen verwalten unter <a href="https://adssettings.google.com">adssettings.google.com</a>.',
+        'analytics.title': 'Analyse',
+        'analytics.desc': 'Einige toolconv-Subdomains können datenschutzbewusste Analysen verwenden, um Site-Leistung und Nutzung zu verstehen. Analysedaten dienen der Verbesserung von Zuverlässigkeit, Inhaltsqualität und Nutzererfahrung. Wir verwenden keine Analyse zur Prüfung Ihrer Dateien.',
+        'third.title': 'Drittanbieter-Links',
+        'third.desc': 'toolconv-Seiten können auf Schwester-Subdomains, Werbepartner, Dokumentation oder andere Drittanbieter-Websites verlinken. Diese Seiten haben eigene Datenschutzpraktiken.',
+        'choices.title': 'Ihre Wahlmöglichkeiten',
+        'choices.li1': 'Sie können Cookies in Ihren Browser-Einstellungen blockieren oder löschen.',
+        'choices.li2': 'Sie können Dateien nicht auswählen, wenn Sie nicht möchten, dass ein Tool diese lokal verarbeitet.',
+        'choices.li3': 'Sie können uns kontaktieren, um die Löschung zuvor gesendeter Support-Nachrichten zu beantragen.',
+        'contact.title': 'Kontakt',
+        'contact.desc': 'Bei Datenschutzfragen kontaktieren Sie <a href="mailto:support@toolconv.com">support@toolconv.com</a>.',
+        'footer.copy': '© 2026 toolconv. Alle Rechte vorbehalten.',
+        'meta.title': 'Datenschutzerklärung - toolconv', 'meta.desc': 'toolconv Datenschutzerklärung — browserbasierte Dateiverarbeitung, Werbung, Analyse, Cookies und Kontaktinformationen.',
+      },
+      pt: {
+        'nav.about': 'Sobre', 'nav.privacy': 'Privacidade', 'nav.terms': 'Termos', 'nav.contact': 'Contato',
+        'title': 'Política de Privacidade',
+        'updated': 'Última atualização: 16 de junho de 2026',
+        'intro': 'Esta política explica como o toolconv.com e os subdomínios relacionados tratam informações quando você usa nossas ferramentas de conversão baseadas no navegador.',
+        'file.title': 'Processamento de arquivos',
+        'file.desc': 'Nossas ferramentas são projetadas para processar arquivos localmente no seu navegador sempre que tecnicamente possível. Os arquivos selecionados para ferramentas baseadas no navegador não são intencionalmente enviados aos servidores do toolconv. Seus arquivos permanecem no seu dispositivo, a menos que um recurso específico indique claramente o contrário.',
+        'info.title': 'Informações que podemos receber',
+        'info.li1': 'Informações técnicas básicas enviadas automaticamente pelo seu navegador, como endereço IP, agente do usuário, página de referência e hora da solicitação.',
+        'info.li2': 'Mensagens e endereços de e-mail que você escolhe fornecer ao nos contatar.',
+        'info.li3': 'Informações de uso agregadas de provedores de análise ou hospedagem, quando habilitadas em um subdomínio do toolconv.',
+        'ads.title': 'Publicidade e cookies',
+        'ads.desc': 'O toolconv pode usar o Google AdSense para exibir anúncios. O Google e seus parceiros podem usar cookies, web beacons, endereços IP, identificadores de dispositivo e tecnologias similares para exibir, medir e personalizar anúncios. Saiba mais em <a href="https://policies.google.com/privacy">policies.google.com/privacy</a> e gerencie as configurações em <a href="https://adssettings.google.com">adssettings.google.com</a>.',
+        'analytics.title': 'Análises',
+        'analytics.desc': 'Alguns subdomínios do toolconv podem usar análises respeitosas da privacidade para entender o desempenho e o uso do site. Os dados de análise são usados para melhorar a confiabilidade, a qualidade do conteúdo e a experiência do usuário. Não usamos análises para inspecionar seus arquivos.',
+        'third.title': 'Links de terceiros',
+        'third.desc': 'As páginas do toolconv podem conter links para subdomínios irmãos, parceiros publicitários, documentação ou outros sites de terceiros. Esses sites têm suas próprias práticas de privacidade.',
+        'choices.title': 'Suas opções',
+        'choices.li1': 'Você pode bloquear ou excluir cookies nas configurações do seu navegador.',
+        'choices.li2': 'Você pode evitar selecionar arquivos se não quiser que uma ferramenta os processe localmente.',
+        'choices.li3': 'Você pode nos contatar para solicitar a exclusão de mensagens de suporte enviadas anteriormente.',
+        'contact.title': 'Contato',
+        'contact.desc': 'Para perguntas sobre privacidade, contate <a href="mailto:support@toolconv.com">support@toolconv.com</a>.',
+        'footer.copy': '© 2026 toolconv. Todos os direitos reservados.',
+        'meta.title': 'Política de Privacidade - toolconv', 'meta.desc': 'Política de privacidade do toolconv sobre processamento de arquivos, publicidade, análises, cookies e informações de contato.',
+      },
+    };
+    const langLabels = { en:'EN', zh:'中文', ja:'日本語', ko:'한국어', es:'ES', fr:'FR', de:'DE', pt:'PT' };
+    function getLang() {
+      var m = document.cookie.match('(^|;)\\s*toolconv_lang\\s*=\\s*([^;]+)');
+      if (m && t[m[2]]) return m[2];
+      var s = localStorage.getItem('toolconv-lang');
+      if (s && t[s]) return s;
+      var n = (navigator.language||'en').split('-')[0];
+      return t[n] ? n : 'en';
+    }
+    function setLang(lang) {
+      localStorage.setItem('toolconv-lang', lang);
+      document.cookie = 'toolconv_lang='+lang+';domain=.toolconv.com;path=/;max-age=31536000;SameSite=Lax';
+      document.documentElement.lang = lang;
+      applyLang(lang);
+    }
+    function applyLang(lang) {
+      var d = t[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!==undefined) el.innerHTML=d[k]; });
+      var lbl=document.getElementById('current-lang-label'); if(lbl) lbl.textContent=langLabels[lang]||lang.toUpperCase();
+      if(d['meta.title']){ var te=document.getElementById('page-title'); if(te) te.textContent=d['meta.title']; }
+      if(d['meta.desc']){ var de=document.getElementById('meta-desc'); if(de) de.setAttribute('content',d['meta.desc']); }
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active',b.dataset.lang===lang); });
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+      var lang=getLang(); setLang(lang);
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.lang); }); });
+    });
+  })();
+  </script>
 </body>
 </html>

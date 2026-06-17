@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang-default="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Use - toolconv</title>
-  <meta name="description" content="Terms of use for toolconv browser-based conversion tools.">
+  <title id="page-title">Terms of Use - toolconv</title>
+  <meta id="meta-desc" name="description" content="Terms of use for toolconv browser-based conversion tools.">
   <link rel="canonical" href="https://toolconv.com/terms">
   <style>
     :root { color-scheme: light; --brand: #3b5de7; --text: #111827; --muted: #4b5563; --line: #e5e7eb; --bg: #f8fafc; }
@@ -12,7 +12,7 @@
     body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
     header, main, footer { max-width: 880px; margin: 0 auto; padding: 24px; }
     header { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); background: #fff; }
-    nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; align-items: center; }
     a { color: var(--brand); text-decoration: none; }
     a:hover, a:focus { text-decoration: underline; }
     .brand { font-weight: 800; color: var(--text); }
@@ -23,47 +23,276 @@
     ul { padding-left: 22px; }
     .updated { color: #6b7280; font-size: 14px; }
     footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; background: #fff; }
+    
+    .lang-trigger { position: relative; }
+    .lang-dropdown { opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s ease; position: absolute; right: 0; top: 100%; margin-top: 4px; width: 160px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 6px 0; z-index: 50; }
+    .lang-trigger:hover .lang-dropdown, .lang-trigger:focus-within .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; color: var(--text); }
+    .lang-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .lang-option { display: flex; align-items: center; gap: 6px; width: 100%; padding: 8px 14px; border: none; background: none; cursor: pointer; font-size: 13px; text-align: left; color: var(--text); }
+    .lang-option:hover { background: #f0f5ff; }
+    .lang-option.active { background: #e0ebff; color: var(--brand); font-weight: 600; }
+    [data-i18n] { transition: opacity 0.15s; }
+
   </style>
 </head>
 <body>
   <header>
     <a class="brand" href="/">toolconv</a>
     <nav aria-label="Main navigation">
-      <a href="/about">About</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="/contact">Contact</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/privacy" data-i18n="nav.privacy">Privacy</a>
+      <a href="/terms" data-i18n="nav.terms">Terms</a>
+      <a href="/contact" data-i18n="nav.contact">Contact</a>
+      
+      <div class="lang-trigger">
+        <button class="lang-btn" aria-label="Switch language">
+          🌐 <span id="current-lang-label">EN</span> ▾
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en">🇺🇸 English</button>
+          <button class="lang-option" data-lang="zh">🇨🇳 简体中文</button>
+          <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+          <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+          <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+          <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+          <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+          <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+        </div>
+      </div>
+
     </nav>
   </header>
   <main>
-    <h1>Terms of Use</h1>
-    <p class="updated">Last updated: June 16, 2026</p>
-    <p>By using toolconv.com or a related toolconv subdomain, you agree to these terms.</p>
+    <h1 data-i18n="title">Terms of Use</h1>
+    <p class="updated" data-i18n="updated">Last updated: June 16, 2026</p>
+    <p data-i18n="intro">By using toolconv.com or a related toolconv subdomain, you agree to these terms.</p>
 
-    <h2>Use of the tools</h2>
-    <p>toolconv provides free browser-based conversion tools for personal, educational, and business use. You are responsible for the files, data, and inputs you choose to process with the tools.</p>
+    <h2 data-i18n="use.title">Use of the tools</h2>
+    <p data-i18n="use.desc">toolconv provides free browser-based conversion tools for personal, educational, and business use. You are responsible for the files, data, and inputs you choose to process with the tools.</p>
 
-    <h2>Acceptable use</h2>
+    <h2 data-i18n="acceptable.title">Acceptable use</h2>
     <ul>
-      <li>Do not use toolconv to process illegal, harmful, infringing, or abusive content.</li>
-      <li>Do not attempt to disrupt, overload, reverse engineer, or misuse the site or its infrastructure.</li>
-      <li>Do not represent toolconv tools or results as professional legal, medical, financial, or engineering advice.</li>
+      <li data-i18n="acceptable.li1">Do not use toolconv to process illegal, harmful, infringing, or abusive content.</li>
+      <li data-i18n="acceptable.li2">Do not attempt to disrupt, overload, reverse engineer, or misuse the site or its infrastructure.</li>
+      <li data-i18n="acceptable.li3">Do not represent toolconv tools or results as professional legal, medical, financial, or engineering advice.</li>
     </ul>
 
-    <h2>No warranty</h2>
-    <p>toolconv is provided as is and as available. We work to make the tools accurate and reliable, but we do not guarantee that every conversion result will be perfect or suitable for every purpose. Always review important files before sharing or publishing them.</p>
+    <h2 data-i18n="warranty.title">No warranty</h2>
+    <p data-i18n="warranty.desc">toolconv is provided as is and as available. We work to make the tools accurate and reliable, but we do not guarantee that every conversion result will be perfect or suitable for every purpose. Always review important files before sharing or publishing them.</p>
 
-    <h2>Third-party services</h2>
-    <p>toolconv may display advertisements or link to third-party websites. We are not responsible for third-party content, products, services, or privacy practices.</p>
+    <h2 data-i18n="third.title">Third-party services</h2>
+    <p data-i18n="third.desc">toolconv may display advertisements or link to third-party websites. We are not responsible for third-party content, products, services, or privacy practices.</p>
 
-    <h2>Changes</h2>
-    <p>We may update these terms as the site changes. Continued use of toolconv after updates means you accept the revised terms.</p>
+    <h2 data-i18n="changes.title">Changes</h2>
+    <p data-i18n="changes.desc">We may update these terms as the site changes. Continued use of toolconv after updates means you accept the revised terms.</p>
 
-    <h2>Contact</h2>
-    <p>Questions about these terms can be sent to <a href="mailto:support@toolconv.com">support@toolconv.com</a>.</p>
+    <h2 data-i18n="contact.title">Contact</h2>
+    <p data-i18n="contact.desc">Questions about these terms can be sent to <a href="mailto:support@toolconv.com">support@toolconv.com</a>.</p>
   </main>
   <footer>
-    &copy; 2026 toolconv. All rights reserved.
+    <span data-i18n="footer.copy">&copy; 2026 toolconv. All rights reserved.</span>
   </footer>
+  <script>
+  (function() {
+    const t = {
+      en: {
+        'nav.about': 'About', 'nav.privacy': 'Privacy', 'nav.terms': 'Terms', 'nav.contact': 'Contact',
+        'title': 'Terms of Use', 'updated': 'Last updated: June 16, 2026',
+        'intro': 'By using toolconv.com or a related toolconv subdomain, you agree to these terms.',
+        'use.title': 'Use of the tools',
+        'use.desc': 'toolconv provides free browser-based conversion tools for personal, educational, and business use. You are responsible for the files, data, and inputs you choose to process with the tools.',
+        'acceptable.title': 'Acceptable use',
+        'acceptable.li1': 'Do not use toolconv to process illegal, harmful, infringing, or abusive content.',
+        'acceptable.li2': 'Do not attempt to disrupt, overload, reverse engineer, or misuse the site or its infrastructure.',
+        'acceptable.li3': 'Do not represent toolconv tools or results as professional legal, medical, financial, or engineering advice.',
+        'warranty.title': 'No warranty',
+        'warranty.desc': 'toolconv is provided as is and as available. We work to make the tools accurate and reliable, but we do not guarantee that every conversion result will be perfect or suitable for every purpose. Always review important files before sharing or publishing them.',
+        'third.title': 'Third-party services',
+        'third.desc': 'toolconv may display advertisements or link to third-party websites. We are not responsible for third-party content, products, services, or privacy practices.',
+        'changes.title': 'Changes',
+        'changes.desc': 'We may update these terms as the site changes. Continued use of toolconv after updates means you accept the revised terms.',
+        'contact.title': 'Contact',
+        'contact.desc': 'Questions about these terms can be sent to <a href="mailto:support@toolconv.com">support@toolconv.com</a>.',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'Terms of Use - toolconv', 'meta.desc': 'Terms of use for toolconv browser-based conversion tools.',
+      },
+      zh: {
+        'nav.about': '关于', 'nav.privacy': '隐私政策', 'nav.terms': '使用条款', 'nav.contact': '联系我们',
+        'title': '使用条款', 'updated': '最后更新：2026年6月16日',
+        'intro': '使用 toolconv.com 或相关 toolconv 子域名即表示你同意这些条款。',
+        'use.title': '工具使用',
+        'use.desc': 'toolconv 提供免费的浏览器端转换工具，供个人、教育和商业使用。你对选择使用工具处理的文件、数据和输入负责。',
+        'acceptable.title': '使用规范',
+        'acceptable.li1': '不得使用 toolconv 处理非法、有害、侵权或滥用内容。',
+        'acceptable.li2': '不得试图干扰、过载、逆向工程或滥用本站及其基础设施。',
+        'acceptable.li3': '不得将 toolconv 工具或结果作为专业法律、医疗、金融或工程建议。',
+        'warranty.title': '免责声明',
+        'warranty.desc': 'toolconv 按"原样"和"可用"状态提供。我们努力使工具准确可靠，但不保证每个转换结果都是完美的或适用于每个目的。在分享或发布重要文件前，请务必审查。',
+        'third.title': '第三方服务',
+        'third.desc': 'toolconv 可能展示广告或链接到第三方网站。我们不对第三方内容、产品、服务或隐私做法负责。',
+        'changes.title': '条款变更',
+        'changes.desc': '我们可能会在网站变更时更新这些条款。更新后继续使用 toolconv 即表示你接受修订后的条款。',
+        'contact.title': '联系方式',
+        'contact.desc': '关于这些条款的问题可发送至 <a href="mailto:support@toolconv.com">support@toolconv.com</a>。',
+        'footer.copy': '© 2026 toolconv. 保留所有权利。',
+        'meta.title': '使用条款 - toolconv', 'meta.desc': 'toolconv 浏览器端转换工具的使用条款。',
+      },
+      ja: {
+        'nav.about': '概要', 'nav.privacy': 'プライバシー', 'nav.terms': '利用規約', 'nav.contact': 'お問い合わせ',
+        'title': '利用規約', 'updated': '最終更新：2026年6月16日',
+        'intro': 'toolconv.com または関連 toolconv サブドメインを使用することで、これらの規約に同意したことになります。',
+        'use.title': 'ツールの使用',
+        'use.desc': 'toolconv は個人、教育、ビジネス用途の無料ブラウザベース変換ツールを提供しています。ツールで処理するファイル、データ、入力に対する責任はユーザーにあります。',
+        'acceptable.title': '適切な使用',
+        'acceptable.li1': '違法、有害、権利侵害、または悪意的なコンテンツの処理に toolconv を使用しないでください。',
+        'acceptable.li2': 'サイトやインフラの妨害、過負荷、リバースエンジニアリング、悪用を試みないでください。',
+        'acceptable.li3': 'toolconv のツールや結果を専門的な法律、医療、金融、またはエンジニアリングの助言として提示しないでください。',
+        'warranty.title': '免責事項',
+        'warranty.desc': 'toolconv は「現状のまま」提供されます。ツールの正確性と信頼性に努めていますが、すべての変換結果が完璧であることやあらゆる目的に適していることを保証するものではありません。重要なファイルは共有・公開前に必ず確認してください。',
+        'third.title': 'サードパーティサービス',
+        'third.desc': 'toolconv は広告を表示したり、サードパーティウェブサイトにリンクする場合があります。サードパーティのコンテンツ、製品、サービス、プライバシー慣行について責任を負いません。',
+        'changes.title': '変更',
+        'changes.desc': 'サイトの変更に伴い、これらの規約を更新する場合があります。更新後の toolconv の継続使用は、改訂された規約への同意を意味します。',
+        'contact.title': 'お問い合わせ',
+        'contact.desc': '規約に関するご質問は <a href="mailto:support@toolconv.com">support@toolconv.com</a> まで。',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': '利用規約 - toolconv', 'meta.desc': 'toolconv ブラウザベース変換ツールの利用規約。',
+      },
+      ko: {
+        'nav.about': '소개', 'nav.privacy': '개인정보', 'nav.terms': '이용약관', 'nav.contact': '연락처',
+        'title': '이용약관', 'updated': '최종 업데이트: 2026년 6월 16일',
+        'intro': 'toolconv.com 또는 관련 toolconv 서브도메인을 사용하면 이 약관에 동의하는 것으로 간주됩니다.',
+        'use.title': '도구 사용',
+        'use.desc': 'toolconv은 개인, 교육 및 비즈니스 용도의 무료 브라우저 기반 변환 도구를 제공합니다. 도구로 처리할 파일, 데이터 및 입력에 대한 책임은 사용자에게 있습니다.',
+        'acceptable.title': '적절한 사용',
+        'acceptable.li1': '불법적, 유해한, 권리 침해적 또는 남용적인 콘텐츠 처리에 toolconv을 사용하지 마세요.',
+        'acceptable.li2': '사이트나 인프라를 방해, 과부하, 리버스 엔지니어링 또는 남용하지 마세요.',
+        'acceptable.li3': 'toolconv 도구나 결과를 전문적인 법률, 의료, 재무 또는 엔지니어링 조언으로 제시하지 마세요.',
+        'warranty.title': '보증 부인',
+        'warranty.desc': 'toolconv은 "있는 그대로" 제공됩니다. 도구의 정확성과 신뢰성을 위해 노력하지만, 모든 변환 결과가 완벽하거나 모든 목적에 적합하다는 것을 보장하지 않습니다. 중요한 파일은 공유나 게시 전에 항상 확인하세요.',
+        'third.title': '제3자 서비스',
+        'third.desc': 'toolconv은 광고를 표시하거나 제3자 웹사이트에 링크할 수 있습니다. 제3자 콘텐츠, 제품, 서비스 또는 개인정보 관행에 대해 책임지지 않습니다.',
+        'changes.title': '변경',
+        'changes.desc': '사이트 변경에 따라 이 약관을 업데이트할 수 있습니다. 업데이트 후 toolconv을 계속 사용하면 개정된 약관에 동의하는 것입니다.',
+        'contact.title': '연락처',
+        'contact.desc': '약관 관련 질문은 <a href="mailto:support@toolconv.com">support@toolconv.com</a>으로 보내주세요.',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': '이용약관 - toolconv', 'meta.desc': 'toolconv 브라우저 기반 변환 도구의 이용약관.',
+      },
+      es: {
+        'nav.about': 'Acerca de', 'nav.privacy': 'Privacidad', 'nav.terms': 'Términos', 'nav.contact': 'Contacto',
+        'title': 'Términos de uso', 'updated': 'Última actualización: 16 de junio de 2026',
+        'intro': 'Al usar toolconv.com o un subdominio relacionado, aceptas estos términos.',
+        'use.title': 'Uso de las herramientas',
+        'use.desc': 'toolconv proporciona herramientas de conversión basadas en el navegador gratuitas para uso personal, educativo y comercial. Eres responsable de los archivos, datos e inputs que decides procesar con las herramientas.',
+        'acceptable.title': 'Uso aceptable',
+        'acceptable.li1': 'No uses toolconv para procesar contenido ilegal, dañino, infractor o abusivo.',
+        'acceptable.li2': 'No intentes interrumpir, sobrecargar, realizar ingeniería inversa o usar indebidamente el sitio o su infraestructura.',
+        'acceptable.li3': 'No presentes las herramientas o resultados de toolconv como asesoramiento profesional legal, médico, financiero o de ingeniería.',
+        'warranty.title': 'Sin garantía',
+        'warranty.desc': 'toolconv se proporciona tal cual y según disponibilidad. Trabajamos para que las herramientas sean precisas y fiables, pero no garantizamos que cada resultado de conversión sea perfecto o adecuado para cada propósito. Siempre revisa archivos importantes antes de compartirlos o publicarlos.',
+        'third.title': 'Servicios de terceros',
+        'third.desc': 'toolconv puede mostrar anuncios o enlazar a sitios web de terceros. No somos responsables del contenido, productos, servicios o prácticas de privacidad de terceros.',
+        'changes.title': 'Cambios',
+        'changes.desc': 'Podemos actualizar estos términos a medida que el sitio cambia. El uso continuado de toolconv después de las actualizaciones significa que aceptas los términos revisados.',
+        'contact.title': 'Contacto',
+        'contact.desc': 'Las preguntas sobre estos términos pueden enviarse a <a href="mailto:support@toolconv.com">support@toolconv.com</a>.',
+        'footer.copy': '© 2026 toolconv. Todos los derechos reservados.',
+        'meta.title': 'Términos de uso - toolconv', 'meta.desc': 'Términos de uso para las herramientas de conversión basadas en el navegador de toolconv.',
+      },
+      fr: {
+        'nav.about': 'À propos', 'nav.privacy': 'Confidentialité', 'nav.terms': 'Conditions', 'nav.contact': 'Contact',
+        'title': "Conditions d'utilisation", 'updated': 'Dernière mise à jour : 16 juin 2026',
+        'intro': "En utilisant toolconv.com ou un sous-domaine associé, vous acceptez ces conditions.",
+        'use.title': 'Utilisation des outils',
+        'use.desc': "toolconv fournit des outils de conversion basés sur le navigateur gratuits pour un usage personnel, éducatif et commercial. Vous êtes responsable des fichiers, données et entrées que vous choisissez de traiter avec les outils.",
+        'acceptable.title': 'Utilisation acceptable',
+        'acceptable.li1': "N'utilisez pas toolconv pour traiter du contenu illégal, nuisible, contrefait ou abusif.",
+        'acceptable.li2': "Ne tentez pas de perturber, surcharger, faire de l'ingénierie inverse ou détourner le site ou son infrastructure.",
+        'acceptable.li3': "Ne présentez pas les outils ou résultats de toolconv comme des conseils professionnels juridiques, médicaux, financiers ou d'ingénierie.",
+        'warranty.title': 'Sans garantie',
+        'warranty.desc': "toolconv est fourni tel quel et selon disponibilité. Nous nous efforçons de rendre les outils précis et fiables, mais nous ne garantissons pas que chaque résultat de conversion sera parfait ou adapté à chaque usage. Vérifiez toujours les fichiers importants avant de les partager ou les publier.",
+        'third.title': 'Services tiers',
+        'third.desc': "toolconv peut afficher des publicités ou des liens vers des sites web tiers. Nous ne sommes pas responsables du contenu, produits, services ou pratiques de confidentialité des tiers.",
+        'changes.title': 'Modifications',
+        'changes.desc': "Nous pouvons mettre à jour ces conditions à mesure que le site évolue. L'utilisation continue de toolconv après les mises à jour signifie que vous acceptez les conditions révisées.",
+        'contact.title': 'Contact',
+        'contact.desc': "Les questions concernant ces conditions peuvent être envoyées à <a href="mailto:support@toolconv.com">support@toolconv.com</a>.",
+        'footer.copy': '© 2026 toolconv. Tous droits réservés.',
+        'meta.title': "Conditions d'utilisation - toolconv", 'meta.desc': "Conditions d'utilisation pour les outils de conversion basés sur le navigateur de toolconv.",
+      },
+      de: {
+        'nav.about': 'Über uns', 'nav.privacy': 'Datenschutz', 'nav.terms': 'Nutzungsbedingungen', 'nav.contact': 'Kontakt',
+        'title': 'Nutzungsbedingungen', 'updated': 'Zuletzt aktualisiert: 16. Juni 2026',
+        'intro': 'Durch die Nutzung von toolconv.com oder einem verwandten Subdomain stimmen Sie diesen Bedingungen zu.',
+        'use.title': 'Nutzung der Tools',
+        'use.desc': 'toolconv bietet kostenlose browserbasierte Konvertierungstools für persönliche, bildungsbezogene und geschäftliche Zwecke. Sie sind verantwortlich für die Dateien, Daten und Eingaben, die Sie mit den Tools verarbeiten.',
+        'acceptable.title': 'Zulässige Nutzung',
+        'acceptable.li1': 'Verwenden Sie toolconv nicht zur Verarbeitung illegaler, schädlicher, rechtsverletzender oder missbräuchlicher Inhalte.',
+        'acceptable.li2': 'Versuchen Sie nicht, die Seite oder ihre Infrastruktur zu stören, zu überlasten, zu reverse-engineeren oder missbräuchlich zu nutzen.',
+        'acceptable.li3': 'Geben Sie toolconv-Tools oder -Ergebnisse nicht als professionelle Rechts-, medizinische, finanzielle oder Ingenieurberatung aus.',
+        'warranty.title': 'Keine Gewährleistung',
+        'warranty.desc': 'toolconv wird wie besehen und wie verfügbar bereitgestellt. Wir arbeiten daran, die Tools genau und zuverlässig zu machen, garantieren aber nicht, dass jedes Konvertierungsergebnis perfekt oder für jeden Zweck geeignet ist. Überprüfen Sie wichtige Dateien immer vor der Freigabe oder Veröffentlichung.',
+        'third.title': 'Drittanbieter-Dienste',
+        'third.desc': 'toolconv kann Werbung anzeigen oder auf Drittanbieter-Websites verlinken. Wir sind nicht für Inhalte, Produkte, Dienste oder Datenschutzpraktiken von Drittanbietern verantwortlich.',
+        'changes.title': 'Änderungen',
+        'changes.desc': 'Wir können diese Bedingungen bei Änderungen der Website aktualisieren. Fortgesetzte Nutzung von toolconv nach Aktualisierungen bedeutet, dass Sie die überarbeiteten Bedingungen akzeptieren.',
+        'contact.title': 'Kontakt',
+        'contact.desc': 'Fragen zu diesen Bedingungen können an <a href="mailto:support@toolconv.com">support@toolconv.com</a> gesendet werden.',
+        'footer.copy': '© 2026 toolconv. Alle Rechte vorbehalten.',
+        'meta.title': 'Nutzungsbedingungen - toolconv', 'meta.desc': 'Nutzungsbedingungen für die browserbasierten Konvertierungstools von toolconv.',
+      },
+      pt: {
+        'nav.about': 'Sobre', 'nav.privacy': 'Privacidade', 'nav.terms': 'Termos', 'nav.contact': 'Contato',
+        'title': 'Termos de Uso', 'updated': 'Última atualização: 16 de junho de 2026',
+        'intro': 'Ao usar toolconv.com ou um subdomínio relacionado, você concorda com estes termos.',
+        'use.title': 'Uso das ferramentas',
+        'use.desc': 'toolconv fornece ferramentas de conversão baseadas no navegador gratuitas para uso pessoal, educacional e comercial. Você é responsável pelos arquivos, dados e entradas que escolhe processar com as ferramentas.',
+        'acceptable.title': 'Uso aceitável',
+        'acceptable.li1': 'Não use toolconv para processar conteúdo ilegal, prejudicial, infrator ou abusivo.',
+        'acceptable.li2': 'Não tente interromper, sobrecarregar, fazer engenharia reversa ou usar indevidamente o site ou sua infraestrutura.',
+        'acceptable.li3': 'Não apresente as ferramentas ou resultados do toolconv como aconselhamento profissional jurídico, médico, financeiro ou de engenharia.',
+        'warranty.title': 'Sem garantia',
+        'warranty.desc': 'toolconv é fornecido "como está" e conforme disponibilidade. Trabalhamos para tornar as ferramentas precisas e confiáveis, mas não garantimos que cada resultado de conversão será perfeito ou adequado para cada finalidade. Sempre revise arquivos importantes antes de compartilhá-los ou publicá-los.',
+        'third.title': 'Serviços de terceiros',
+        'third.desc': 'toolconv pode exibir anúncios ou links para sites de terceiros. Não somos responsáveis por conteúdo, produtos, serviços ou práticas de privacidade de terceiros.',
+        'changes.title': 'Alterações',
+        'changes.desc': 'Podemos atualizar estes termos conforme o site muda. O uso continuado do toolconv após atualizações significa que você aceita os termos revisados.',
+        'contact.title': 'Contato',
+        'contact.desc': 'Perguntas sobre estes termos podem ser enviadas para <a href="mailto:support@toolconv.com">support@toolconv.com</a>.',
+        'footer.copy': '© 2026 toolconv. Todos os direitos reservados.',
+        'meta.title': 'Termos de Uso - toolconv', 'meta.desc': 'Termos de uso para as ferramentas de conversão baseadas no navegador do toolconv.',
+      },
+    };
+    const langLabels = { en:'EN', zh:'中文', ja:'日本語', ko:'한국어', es:'ES', fr:'FR', de:'DE', pt:'PT' };
+    function getLang() {
+      var m = document.cookie.match('(^|;)\\s*toolconv_lang\\s*=\\s*([^;]+)');
+      if (m && t[m[2]]) return m[2];
+      var s = localStorage.getItem('toolconv-lang');
+      if (s && t[s]) return s;
+      var n = (navigator.language||'en').split('-')[0];
+      return t[n] ? n : 'en';
+    }
+    function setLang(lang) {
+      localStorage.setItem('toolconv-lang', lang);
+      document.cookie = 'toolconv_lang='+lang+';domain=.toolconv.com;path=/;max-age=31536000;SameSite=Lax';
+      document.documentElement.lang = lang;
+      applyLang(lang);
+    }
+    function applyLang(lang) {
+      var d = t[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!==undefined) el.innerHTML=d[k]; });
+      var lbl=document.getElementById('current-lang-label'); if(lbl) lbl.textContent=langLabels[lang]||lang.toUpperCase();
+      if(d['meta.title']){ var te=document.getElementById('page-title'); if(te) te.textContent=d['meta.title']; }
+      if(d['meta.desc']){ var de=document.getElementById('meta-desc'); if(de) de.setAttribute('content',d['meta.desc']); }
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active',b.dataset.lang===lang); });
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+      var lang=getLang(); setLang(lang);
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.lang); }); });
+    });
+  })();
+  </script>
 </body>
 </html>

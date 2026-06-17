@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang-default="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact toolconv</title>
-  <meta name="description" content="Contact toolconv for support, corrections, privacy questions, and partnership inquiries.">
+  <title id="page-title">Contact toolconv</title>
+  <meta id="meta-desc" name="description" content="Contact toolconv for support, corrections, privacy questions, and partnership inquiries.">
   <link rel="canonical" href="https://toolconv.com/contact">
   <style>
     :root { color-scheme: light; --brand: #3b5de7; --text: #111827; --muted: #4b5563; --line: #e5e7eb; --bg: #f8fafc; }
@@ -12,7 +12,7 @@
     body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--text); background: var(--bg); line-height: 1.65; }
     header, main, footer { max-width: 880px; margin: 0 auto; padding: 24px; }
     header { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); background: #fff; }
-    nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 14px; align-items: center; }
     a { color: var(--brand); text-decoration: none; }
     a:hover, a:focus { text-decoration: underline; }
     .brand { font-weight: 800; color: var(--text); }
@@ -23,38 +23,219 @@
     ul { padding-left: 22px; }
     .contact-box { border: 1px solid var(--line); border-radius: 8px; padding: 20px; background: #f9fafb; }
     footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; background: #fff; }
+    
+    .lang-trigger { position: relative; }
+    .lang-dropdown { opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s ease; position: absolute; right: 0; top: 100%; margin-top: 4px; width: 160px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 6px 0; z-index: 50; }
+    .lang-trigger:hover .lang-dropdown, .lang-trigger:focus-within .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; color: var(--text); }
+    .lang-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .lang-option { display: flex; align-items: center; gap: 6px; width: 100%; padding: 8px 14px; border: none; background: none; cursor: pointer; font-size: 13px; text-align: left; color: var(--text); }
+    .lang-option:hover { background: #f0f5ff; }
+    .lang-option.active { background: #e0ebff; color: var(--brand); font-weight: 600; }
+    [data-i18n] { transition: opacity 0.15s; }
+
   </style>
 </head>
 <body>
   <header>
     <a class="brand" href="/">toolconv</a>
     <nav aria-label="Main navigation">
-      <a href="/about">About</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="/contact">Contact</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/privacy" data-i18n="nav.privacy">Privacy</a>
+      <a href="/terms" data-i18n="nav.terms">Terms</a>
+      <a href="/contact" data-i18n="nav.contact">Contact</a>
+      
+      <div class="lang-trigger">
+        <button class="lang-btn" aria-label="Switch language">
+          🌐 <span id="current-lang-label">EN</span> ▾
+        </button>
+        <div class="lang-dropdown">
+          <button class="lang-option" data-lang="en">🇺🇸 English</button>
+          <button class="lang-option" data-lang="zh">🇨🇳 简体中文</button>
+          <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+          <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+          <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+          <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+          <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+          <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+        </div>
+      </div>
+
     </nav>
   </header>
   <main>
-    <h1>Contact toolconv</h1>
-    <p>Use this page for support, corrections, privacy questions, partnerships, sponsorships, and general feedback.</p>
+    <h1 data-i18n="title">Contact toolconv</h1>
+    <p data-i18n="intro">Use this page for support, corrections, privacy questions, partnerships, sponsorships, and general feedback.</p>
 
     <div class="contact-box">
-      <h2>Email</h2>
-      <p><a href="mailto:support@toolconv.com">support@toolconv.com</a></p>
-      <p>Please include the tool URL, your browser, your device type, and a short description of the issue. Do not send confidential files unless we explicitly ask for them.</p>
+      <h2 data-i18n="email.title">Email</h2>
+      <p data-i18n="email.address"><a href="mailto:support@toolconv.com">support@toolconv.com</a></p>
+      <p data-i18n="email.note">Please include the tool URL, your browser, your device type, and a short description of the issue. Do not send confidential files unless we explicitly ask for them.</p>
     </div>
 
-    <h2>Common reasons to contact us</h2>
+    <h2 data-i18n="reasons.title">Common reasons to contact us</h2>
     <ul>
-      <li>A tool result looks incorrect or needs clearer explanation.</li>
-      <li>A page has a broken link, translation issue, or outdated information.</li>
-      <li>You have a privacy, advertising, or data handling question.</li>
-      <li>You want to discuss sponsorship, partnership, or business use.</li>
+      <li data-i18n="reasons.li1">A tool result looks incorrect or needs clearer explanation.</li>
+      <li data-i18n="reasons.li2">A page has a broken link, translation issue, or outdated information.</li>
+      <li data-i18n="reasons.li3">You have a privacy, advertising, or data handling question.</li>
+      <li data-i18n="reasons.li4">You want to discuss sponsorship, partnership, or business use.</li>
     </ul>
   </main>
   <footer>
-    &copy; 2026 toolconv. All rights reserved.
+    <span data-i18n="footer.copy">&copy; 2026 toolconv. All rights reserved.</span>
   </footer>
+  <script>
+  (function() {
+    const t = {
+      en: {
+        'nav.about': 'About', 'nav.privacy': 'Privacy', 'nav.terms': 'Terms', 'nav.contact': 'Contact',
+        'title': 'Contact toolconv',
+        'intro': 'Use this page for support, corrections, privacy questions, partnerships, sponsorships, and general feedback.',
+        'email.title': 'Email',
+        'email.address': '<a href="mailto:support@toolconv.com">support@toolconv.com</a>',
+        'email.note': 'Please include the tool URL, your browser, your device type, and a short description of the issue. Do not send confidential files unless we explicitly ask for them.',
+        'reasons.title': 'Common reasons to contact us',
+        'reasons.li1': 'A tool result looks incorrect or needs clearer explanation.',
+        'reasons.li2': 'A page has a broken link, translation issue, or outdated information.',
+        'reasons.li3': 'You have a privacy, advertising, or data handling question.',
+        'reasons.li4': 'You want to discuss sponsorship, partnership, or business use.',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'Contact toolconv', 'meta.desc': 'Contact toolconv for support, corrections, privacy questions, and partnership inquiries.',
+      },
+      zh: {
+        'nav.about': '关于', 'nav.privacy': '隐私政策', 'nav.terms': '使用条款', 'nav.contact': '联系我们',
+        'title': '联系 toolconv',
+        'intro': '通过此页面获取支持、纠错、隐私问题、合作、赞助和一般反馈。',
+        'email.title': '电子邮件',
+        'email.address': '<a href="mailto:support@toolconv.com">support@toolconv.com</a>',
+        'email.note': '请包含工具 URL、你的浏览器、设备类型和问题的简要描述。除非我们明确要求，否则不要发送机密文件。',
+        'reasons.title': '常见联系原因',
+        'reasons.li1': '工具结果看起来不正确或需要更清晰的说明。',
+        'reasons.li2': '页面存在损坏链接、翻译问题或过时信息。',
+        'reasons.li3': '你有隐私、广告或数据处理方面的问题。',
+        'reasons.li4': '你想讨论赞助、合作或商业使用。',
+        'footer.copy': '© 2026 toolconv. 保留所有权利。',
+        'meta.title': '联系 toolconv', 'meta.desc': '联系 toolconv 获取支持、纠错、隐私问题和合作咨询。',
+      },
+      ja: {
+        'nav.about': '概要', 'nav.privacy': 'プライバシー', 'nav.terms': '利用規約', 'nav.contact': 'お問い合わせ',
+        'title': 'toolconv お問い合わせ',
+        'intro': 'サポート、修正、プライバシーに関するご質問、パートナーシップ、スポンサーシップ、一般的なフィードバックにこのページをご利用ください。',
+        'email.title': 'メール',
+        'email.address': '<a href="mailto:support@toolconv.com">support@toolconv.com</a>',
+        'email.note': 'ツール URL、ブラウザ、デバイスタイプ、問題の簡単な説明を含めてください。明示的に求められない限り、機密ファイルは送信しないでください。',
+        'reasons.title': 'お問い合わせの一般的な理由',
+        'reasons.li1': 'ツールの結果が正しくない、またはより明確な説明が必要。',
+        'reasons.li2': 'ページにリンク切れ、翻訳の問題、古い情報がある。',
+        'reasons.li3': 'プライバシー、広告、データ処理に関する質問がある。',
+        'reasons.li4': 'スポンサーシップ、パートナーシップ、ビジネス利用について相談したい。',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'toolconv お問い合わせ', 'meta.desc': 'toolconv へのサポート、修正、プライバシーに関するご質問、パートナーシップのお問い合わせ。',
+      },
+      ko: {
+        'nav.about': '소개', 'nav.privacy': '개인정보', 'nav.terms': '이용약관', 'nav.contact': '연락처',
+        'title': 'toolconv 연락처',
+        'intro': '지원, 수정, 개인정보 질문, 파트너십, 후원 및 일반 피드백에 이 페이지를 사용하세요.',
+        'email.title': '이메일',
+        'email.address': '<a href="mailto:support@toolconv.com">support@toolconv.com</a>',
+        'email.note': '도구 URL, 브라우저, 기기 유형 및 문제의 간단한 설명을 포함해 주세요. 명시적으로 요청하지 않는 한 기밀 파일을 보내지 마세요.',
+        'reasons.title': '일반적인 연락 사유',
+        'reasons.li1': '도구 결과가 올바르지 않거나 더 명확한 설명이 필요합니다.',
+        'reasons.li2': '페이지에 끊어진 링크, 번역 문제 또는 오래된 정보가 있습니다.',
+        'reasons.li3': '개인정보, 광고 또는 데이터 처리에 대한 질문이 있습니다.',
+        'reasons.li4': '후원, 파트너십 또는 비즈니스 사용에 대해 논의하고 싶습니다.',
+        'footer.copy': '© 2026 toolconv. All rights reserved.',
+        'meta.title': 'toolconv 연락처', 'meta.desc': '지원, 수정, 개인정보 질문 및 파트너십 문의를 위한 toolconv 연락처.',
+      },
+      es: {
+        'nav.about': 'Acerca de', 'nav.privacy': 'Privacidad', 'nav.terms': 'Términos', 'nav.contact': 'Contacto',
+        'title': 'Contactar toolconv',
+        'intro': 'Usa esta página para soporte, correcciones, preguntas de privacidad, patrocinios, colaboraciones y comentarios generales.',
+        'email.title': 'Correo electrónico',
+        'email.address': '<a href="mailto:support@toolconv.com">support@toolconv.com</a>',
+        'email.note': 'Incluye la URL de la herramienta, tu navegador, tu tipo de dispositivo y una breve descripción del problema. No envíes archivos confidenciales a menos que te lo pidamos explícitamente.',
+        'reasons.title': 'Razones comunes para contactarnos',
+        'reasons.li1': 'Un resultado de herramienta parece incorrecto o necesita una explicación más clara.',
+        'reasons.li2': 'Una página tiene un enlace roto, un problema de traducción o información desactualizada.',
+        'reasons.li3': 'Tienes una pregunta sobre privacidad, publicidad o manejo de datos.',
+        'reasons.li4': 'Quieres discutir patrocinio, colaboración o uso comercial.',
+        'footer.copy': '© 2026 toolconv. Todos los derechos reservados.',
+        'meta.title': 'Contactar toolconv', 'meta.desc': 'Contacta toolconv para soporte, correcciones, preguntas de privacidad e consultas de colaboración.',
+      },
+      fr: {
+        'nav.about': 'À propos', 'nav.privacy': 'Confidentialité', 'nav.terms': 'Conditions', 'nav.contact': 'Contact',
+        'title': 'Contacter toolconv',
+        'intro': 'Utilisez cette page pour le support, les corrections, les questions de confidentialité, les partenariats, les sponsorings et les retours généraux.',
+        'email.title': 'E-mail',
+        'email.address': '<a href="mailto:support@toolconv.com">support@toolconv.com</a>',
+        'email.note': 'Veuillez inclure l'URL de l'outil, votre navigateur, votre type d'appareil et une brève description du problème. N'envoyez pas de fichiers confidentiels sauf si nous vous le demandons explicitement.',
+        'reasons.title': 'Raisons courantes de nous contacter',
+        'reasons.li1': 'Un résultat d'outil semble incorrect ou nécessite une explication plus claire.',
+        'reasons.li2': 'Une page a un lien cassé, un problème de traduction ou des informations obsolètes.',
+        'reasons.li3': 'Vous avez une question sur la confidentialité, la publicité ou le traitement des données.',
+        'reasons.li4': 'Vous souhaitez discuter de sponsoring, de partenariat ou d'utilisation commerciale.',
+        'footer.copy': '© 2026 toolconv. Tous droits réservés.',
+        'meta.title': 'Contacter toolconv', 'meta.desc': 'Contactez toolconv pour le support, les corrections, les questions de confidentialité et les demandes de partenariat.',
+      },
+      de: {
+        'nav.about': 'Über uns', 'nav.privacy': 'Datenschutz', 'nav.terms': 'Nutzungsbedingungen', 'nav.contact': 'Kontakt',
+        'title': 'toolconv kontaktieren',
+        'intro': 'Nutzen Sie diese Seite für Support, Korrekturen, Datenschutzfragen, Partnerschaften, Sponsoring und allgemeines Feedback.',
+        'email.title': 'E-Mail',
+        'email.address': '<a href="mailto:support@toolconv.com">support@toolconv.com</a>',
+        'email.note': 'Bitte geben Sie die Tool-URL, Ihren Browser, Ihren Gerätetyp und eine kurze Beschreibung des Problems an. Senden Sie keine vertraulichen Dateien, es sei denn, wir bitten ausdrücklich darum.',
+        'reasons.title': 'Häufige Kontaktgründe',
+        'reasons.li1': 'Ein Tool-Ergebnis sieht falsch aus oder benötigt eine klarere Erklärung.',
+        'reasons.li2': 'Eine Seite hat einen defekten Link, ein Übersetzungsproblem oder veraltete Informationen.',
+        'reasons.li3': 'Sie haben eine Frage zu Datenschutz, Werbung oder Datenverarbeitung.',
+        'reasons.li4': 'Sie möchten Sponsoring, Partnerschaft oder kommerzielle Nutzung besprechen.',
+        'footer.copy': '© 2026 toolconv. Alle Rechte vorbehalten.',
+        'meta.title': 'toolconv kontaktieren', 'meta.desc': 'Kontaktieren Sie toolconv für Support, Korrekturen, Datenschutzfragen und Partnerschaftsanfragen.',
+      },
+      pt: {
+        'nav.about': 'Sobre', 'nav.privacy': 'Privacidade', 'nav.terms': 'Termos', 'nav.contact': 'Contato',
+        'title': 'Contatar toolconv',
+        'intro': 'Use esta página para suporte, correções, perguntas de privacidade, parcerias, patrocínios e feedback geral.',
+        'email.title': 'E-mail',
+        'email.address': '<a href="mailto:support@toolconv.com">support@toolconv.com</a>',
+        'email.note': 'Inclua a URL da ferramenta, seu navegador, tipo de dispositivo e uma breve descrição do problema. Não envie arquivos confidenciais a menos que solicitemos explicitamente.',
+        'reasons.title': 'Razões comuns para nos contatar',
+        'reasons.li1': 'Um resultado de ferramenta parece incorreto ou precisa de uma explicação mais clara.',
+        'reasons.li2': 'Uma página tem um link quebrado, problema de tradução ou informação desatualizada.',
+        'reasons.li3': 'Você tem uma pergunta sobre privacidade, publicidade ou tratamento de dados.',
+        'reasons.li4': 'Você quer discutir patrocínio, parceria ou uso comercial.',
+        'footer.copy': '© 2026 toolconv. Todos os direitos reservados.',
+        'meta.title': 'Contatar toolconv', 'meta.desc': 'Contate o toolconv para suporte, correções, perguntas de privacidade e consultas de parceria.',
+      },
+    };
+    const langLabels = { en:'EN', zh:'中文', ja:'日本語', ko:'한국어', es:'ES', fr:'FR', de:'DE', pt:'PT' };
+    function getLang() {
+      var m = document.cookie.match('(^|;)\\s*toolconv_lang\\s*=\\s*([^;]+)');
+      if (m && t[m[2]]) return m[2];
+      var s = localStorage.getItem('toolconv-lang');
+      if (s && t[s]) return s;
+      var n = (navigator.language||'en').split('-')[0];
+      return t[n] ? n : 'en';
+    }
+    function setLang(lang) {
+      localStorage.setItem('toolconv-lang', lang);
+      document.cookie = 'toolconv_lang='+lang+';domain=.toolconv.com;path=/;max-age=31536000;SameSite=Lax';
+      document.documentElement.lang = lang;
+      applyLang(lang);
+    }
+    function applyLang(lang) {
+      var d = t[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!==undefined) el.innerHTML=d[k]; });
+      var lbl=document.getElementById('current-lang-label'); if(lbl) lbl.textContent=langLabels[lang]||lang.toUpperCase();
+      if(d['meta.title']){ var te=document.getElementById('page-title'); if(te) te.textContent=d['meta.title']; }
+      if(d['meta.desc']){ var de=document.getElementById('meta-desc'); if(de) de.setAttribute('content',d['meta.desc']); }
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active',b.dataset.lang===lang); });
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+      var lang=getLang(); setLang(lang);
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.lang); }); });
+    });
+  })();
+  </script>
 </body>
 </html>

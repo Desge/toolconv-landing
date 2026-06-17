@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang-default="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page not found - toolconv</title>
+  <title id="page-title">Page not found - toolconv</title>
   <meta name="robots" content="noindex">
   <style>
     :root { color-scheme: light; --brand: #3b5de7; --text: #111827; --muted: #4b5563; --line: #e5e7eb; --bg: #f8fafc; }
@@ -14,13 +14,81 @@
     p { color: var(--muted); font-size: 18px; }
     a { color: var(--brand); text-decoration: none; font-weight: 700; }
     a:hover, a:focus { text-decoration: underline; }
+    /* Language switcher */
+    .lang-bar { position: fixed; top: 16px; right: 24px; z-index: 50; }
+    .lang-trigger { position: relative; }
+    .lang-dropdown { opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s ease; position: absolute; right: 0; top: 100%; margin-top: 4px; width: 160px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); padding: 6px 0; }
+    .lang-trigger:hover .lang-dropdown, .lang-trigger:focus-within .lang-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; cursor: pointer; font-size: 13px; color: var(--text); }
+    .lang-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .lang-option { display: flex; align-items: center; gap: 6px; width: 100%; padding: 8px 14px; border: none; background: none; cursor: pointer; font-size: 13px; text-align: left; color: var(--text); }
+    .lang-option:hover { background: #f0f5ff; }
+    .lang-option.active { background: #e0ebff; color: var(--brand); font-weight: 600; }
+    [data-i18n] { transition: opacity 0.15s; }
   </style>
 </head>
 <body>
+  <div class="lang-bar">
+    <div class="lang-trigger">
+      <button class="lang-btn" aria-label="Switch language">
+        🌐 <span id="current-lang-label">EN</span> ▾
+      </button>
+      <div class="lang-dropdown">
+        <button class="lang-option" data-lang="en">🇺🇸 English</button>
+        <button class="lang-option" data-lang="zh">🇨🇳 简体中文</button>
+        <button class="lang-option" data-lang="ja">🇯🇵 日本語</button>
+        <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+        <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+        <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+        <button class="lang-option" data-lang="de">🇩🇪 Deutsch</button>
+        <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+      </div>
+    </div>
+  </div>
   <main>
-    <h1>Page not found</h1>
-    <p>The page you requested does not exist. Visit the homepage to choose a working converter.</p>
-    <p><a href="/">Back to toolconv</a></p>
+    <h1 data-i18n="title">Page not found</h1>
+    <p data-i18n="desc">The page you requested does not exist. Visit the homepage to choose a working converter.</p>
+    <p><a href="/" data-i18n="back">Back to toolconv</a></p>
   </main>
+  <script>
+  (function() {
+    const t = {
+      en: { 'title': 'Page not found', 'desc': 'The page you requested does not exist. Visit the homepage to choose a working converter.', 'back': 'Back to toolconv', 'meta.title': 'Page not found - toolconv' },
+      zh: { 'title': '页面未找到', 'desc': '你请求的页面不存在。访问首页选择一个可用的转换工具。', 'back': '返回 toolconv', 'meta.title': '页面未找到 - toolconv' },
+      ja: { 'title': 'ページが見つかりません', 'desc': 'リクエストされたページは存在しません。ホームページに戻って変換ツールを選択してください。', 'back': 'toolconv に戻る', 'meta.title': 'ページが見つかりません - toolconv' },
+      ko: { 'title': '페이지를 찾을 수 없습니다', 'desc': '요청하신 페이지가 존재하지 않습니다. 홈페이지로 돌아가 변환 도구를 선택하세요.', 'back': 'toolconv으로 돌아가기', 'meta.title': '페이지를 찾을 수 없습니다 - toolconv' },
+      es: { 'title': 'Página no encontrada', 'desc': 'La página solicitada no existe. Visita la página de inicio para elegir un conversor disponible.', 'back': 'Volver a toolconv', 'meta.title': 'Página no encontrada - toolconv' },
+      fr: { 'title': 'Page introuvable', 'desc': 'La page demandée n\'existe pas. Visitez la page d\'accueil pour choisir un convertisseur.', 'back': 'Retour à toolconv', 'meta.title': 'Page introuvable - toolconv' },
+      de: { 'title': 'Seite nicht gefunden', 'desc': 'Die angeforderte Seite existiert nicht. Besuchen Sie die Startseite, um ein Konvertierungstool auszuwählen.', 'back': 'Zurück zu toolconv', 'meta.title': 'Seite nicht gefunden - toolconv' },
+      pt: { 'title': 'Página não encontrada', 'desc': 'A página solicitada não existe. Visite a página inicial para escolher um conversor disponível.', 'back': 'Voltar ao toolconv', 'meta.title': 'Página não encontrada - toolconv' },
+    };
+    const langLabels = { en:'EN', zh:'中文', ja:'日本語', ko:'한국어', es:'ES', fr:'FR', de:'DE', pt:'PT' };
+    function getLang() {
+      var m = document.cookie.match('(^|;)\\s*toolconv_lang\\s*=\\s*([^;]+)');
+      if (m && t[m[2]]) return m[2];
+      var s = localStorage.getItem('toolconv-lang');
+      if (s && t[s]) return s;
+      var n = (navigator.language||'en').split('-')[0];
+      return t[n] ? n : 'en';
+    }
+    function setLang(lang) {
+      localStorage.setItem('toolconv-lang', lang);
+      document.cookie = 'toolconv_lang='+lang+';domain=.toolconv.com;path=/;max-age=31536000;SameSite=Lax';
+      document.documentElement.lang = lang;
+      applyLang(lang);
+    }
+    function applyLang(lang) {
+      var d = t[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(d[k]!==undefined) el.innerHTML=d[k]; });
+      var lbl=document.getElementById('current-lang-label'); if(lbl) lbl.textContent=langLabels[lang]||lang.toUpperCase();
+      if(d['meta.title']){ var te=document.getElementById('page-title'); if(te) te.textContent=d['meta.title']; }
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.classList.toggle('active',b.dataset.lang===lang); });
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+      var lang=getLang(); setLang(lang);
+      document.querySelectorAll('.lang-option').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.lang); }); });
+    });
+  })();
+  </script>
 </body>
 </html>
